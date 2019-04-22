@@ -10,16 +10,19 @@ public static class GameComponentsLookup {
 
     public const int BoadGame = 0;
     public const int BoadGameElement = 1;
+    public const int Position = 2;
 
-    public const int TotalComponents = 2;
+    public const int TotalComponents = 3;
 
     public static readonly string[] componentNames = {
         "BoadGame",
-        "BoadGameElement"
+        "BoadGameElement",
+        "Position"
     };
 
     public static readonly System.Type[] componentTypes = {
         typeof(BoadGameComponent),
-        typeof(BoadGameElementComponent)
+        typeof(BoadGameElementComponent),
+        typeof(PositionComponent)
     };
 }

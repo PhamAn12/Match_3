@@ -307,9 +307,15 @@
 /define:CSHARP_7_OR_LATER
 /define:CSHARP_7_3_OR_NEWER
 "Assets/Components/BoadGameComponent.cs"
+"Assets/Components/BoadGameElementComponent.cs"
+"Assets/Components/PositionComponent.cs"
 "Assets/DesperateDevs/Compile.cs"
+"Assets/GameController.cs"
 "Assets/Generated/Contexts.cs"
 "Assets/Generated/Feature.cs"
+"Assets/Generated/Game/Components/GameBoadGameComponent.cs"
+"Assets/Generated/Game/Components/GameBoadGameElementComponent.cs"
+"Assets/Generated/Game/Components/GamePositionComponent.cs"
 "Assets/Generated/Game/GameAttribute.cs"
 "Assets/Generated/Game/GameComponentsLookup.cs"
 "Assets/Generated/Game/GameContext.cs"
@@ -320,3 +326,4 @@
 "Assets/Generated/Input/InputContext.cs"
 "Assets/Generated/Input/InputEntity.cs"
 "Assets/Generated/Input/InputMatcher.cs"
+"Assets/Systems/CreateBoardSystem.cs"

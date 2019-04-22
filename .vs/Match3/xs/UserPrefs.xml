@@ -1,12 +1,14 @@
 ﻿<Properties StartupConfiguration="{B6F049EB-439F-80BB-E5E4-CA562DF38555}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Systems/NewClass.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/GameController.cs">
     <Files>
-      <File FileName="Assets/Generated/Game/GameContext.cs" Line="1" Column="1" />
       <File FileName="Assets/Generated/Game/GameEntity.cs" Line="1" Column="1" />
-      <File FileName="Assets/Components/BoadGameComponent.cs" Line="7" Column="20" />
+      <File FileName="Assets/Components/BoadGameComponent.cs" Line="7" Column="19" />
       <File FileName="Assets/Components/BoadGameElementComponent.cs" Line="6" Column="1" />
-      <File FileName="Assets/Generated/Game/Components/GameBoadGameComponent.cs" Line="32" Column="6" />
-      <File FileName="Assets/Systems/NewClass.cs" Line="1" Column="1" />
+      <File FileName="Assets/Generated/Game/Components/GameBoadGameComponent.cs" Line="19" Column="40" />
+      <File FileName="Assets/Systems/CreateBoardSystem.cs" Line="25" Column="13" />
+      <File FileName="Assets/GameController.cs" Line="7" Column="25" />
+      <File FileName="Assets/RandomBoardElements.cs" Line="7" Column="30" />
+      <File FileName="Assets/Systems/BoardSystems.cs" Line="7" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
