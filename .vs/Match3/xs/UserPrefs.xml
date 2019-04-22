@@ -1,0 +1,19 @@
+﻿<Properties StartupConfiguration="{B6F049EB-439F-80BB-E5E4-CA562DF38555}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Systems/NewClass.cs">
+    <Files>
+      <File FileName="Assets/Generated/Game/GameContext.cs" Line="1" Column="1" />
+      <File FileName="Assets/Generated/Game/GameEntity.cs" Line="1" Column="1" />
+      <File FileName="Assets/Components/BoadGameComponent.cs" Line="7" Column="20" />
+      <File FileName="Assets/Components/BoadGameElementComponent.cs" Line="6" Column="1" />
+      <File FileName="Assets/Generated/Game/Components/GameBoadGameComponent.cs" Line="32" Column="6" />
+      <File FileName="Assets/Systems/NewClass.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
