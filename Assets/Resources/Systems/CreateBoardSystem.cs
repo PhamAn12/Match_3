@@ -20,13 +20,14 @@ public class CreateBoardSystem : ReactiveSystem<GameEntity>, IInitializeSystem
         UnityEngine.Debug.Log(gameBoard.columns);
         for (int r = 0; r < gameBoard.row; r++)
         {
-            for (int column = 0; column < gameBoard.columns; column++)
+            for (int c = 0; c < gameBoard.columns; c++)
             {
-                UnityEngine.Debug.Log("A");
-                
+
+                _context.CreateRandomPiece(r, c);
+                //UnityEngine.Debug.Log("A");
             }
 
-            UnityEngine.Debug.Log("\n");
+            
         }
     }
 

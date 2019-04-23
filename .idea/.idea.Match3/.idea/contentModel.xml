@@ -13,12 +13,12 @@
           <e p="Entitas.xml" t="Include" />
           <e p="LICENSE.txt" t="Include" />
         </e>
-        <e p="GameController.cs" t="Include" />
         <e p="Generated" t="Include">
           <e p="Contexts.cs" t="Include" />
           <e p="Feature.cs" t="Include" />
           <e p="Game" t="Include">
             <e p="Components" t="Include">
+              <e p="GameAssetComponent.cs" t="Include" />
               <e p="GameBoadGameComponent.cs" t="Include" />
               <e p="GameBoadGameElementComponent.cs" t="Include" />
               <e p="GamePositionComponent.cs" t="Include" />
@@ -37,9 +37,9 @@
             <e p="InputMatcher.cs" t="Include" />
           </e>
         </e>
-        <e p="RandomBoardElements.cs" t="Include" />
         <e p="Resources" t="Include">
           <e p="Components" t="Include">
+            <e p="AssetComponent.cs" t="Include" />
             <e p="BoadGameComponent.cs" t="Include" />
             <e p="BoadGameElementComponent.cs" t="Include" />
             <e p="PositionComponent.cs" t="Include" />
@@ -47,6 +47,13 @@
           <e p="Systems" t="Include">
             <e p="BoardSystems.cs" t="Include" />
             <e p="CreateBoardSystem.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="GameController.cs" t="Include" />
+          <e p="RandomBoardElements.cs" t="Include" />
+          <e p="Test" t="Include">
+            <e p="GenerateBlock.cs" t="Include" />
           </e>
         </e>
       </e>
