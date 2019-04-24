@@ -28,10 +28,15 @@ public class GenerateBlock : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        var block_instance = Instantiate(block) as GameObject;
+        for (var i = 0; i < 4; i++)
+        {
+            for (var j = 0; j < 4; j++)
+            {
+                var block_instance = Instantiate(block) as GameObject;
+                block_instance.transform.position = new Vector3(i ,j,0); 
+            }
+        }
         
-        block_instance.transform.position = new Vector3(3,3,0); 
         Debug.Log("On GameObject Start");
         
     }
@@ -45,7 +50,7 @@ public class GenerateBlock : MonoBehaviour
     void Update()
     {
         
-        Debug.Log("On Update");
+     //   Debug.Log("On Update");
         
     }
 }

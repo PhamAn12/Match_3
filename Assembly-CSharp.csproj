@@ -78,10 +78,12 @@
     <Compile Include="Assets\Resources\Components\BoadGameComponent.cs" />
     <Compile Include="Assets\Resources\Components\BoadGameElementComponent.cs" />
     <Compile Include="Assets\Resources\Components\PositionComponent.cs" />
+    <Compile Include="Assets\Resources\Systems\AddViewSystems.cs" />
     <Compile Include="Assets\Resources\Systems\BoardSystems.cs" />
     <Compile Include="Assets\Resources\Systems\CreateBoardSystem.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\RandomBoardElements.cs" />
+    <Compile Include="Assets\Scripts\Test\GenarateBrick.cs" />
     <Compile Include="Assets\Scripts\Test\GenerateBlock.cs" />
     <None Include="Assets\Entitas\Entitas.xml" />
     <None Include="Assets\Entitas\LICENSE.txt" />

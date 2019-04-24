@@ -45,6 +45,7 @@
             <e p="PositionComponent.cs" t="Include" />
           </e>
           <e p="Systems" t="Include">
+            <e p="AddViewSystems.cs" t="Include" />
             <e p="BoardSystems.cs" t="Include" />
             <e p="CreateBoardSystem.cs" t="Include" />
           </e>
@@ -53,6 +54,7 @@
           <e p="GameController.cs" t="Include" />
           <e p="RandomBoardElements.cs" t="Include" />
           <e p="Test" t="Include">
+            <e p="GenarateBrick.cs" t="Include" />
             <e p="GenerateBlock.cs" t="Include" />
           </e>
         </e>

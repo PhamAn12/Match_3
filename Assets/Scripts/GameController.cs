@@ -13,8 +13,8 @@ public class GameController : MonoBehaviour
         
        _systems = new Feature("Systems").Add(new BoardSystems(contexts.game));
         _systems.Initialize();
-
-
+        Debug.Log("in game Controller");
+    
     }
     
     
