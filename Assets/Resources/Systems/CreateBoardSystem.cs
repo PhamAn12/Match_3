@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
+
+// Create board game by using RandomBoardElement
 public class CreateBoardSystem : ReactiveSystem<GameEntity>, IInitializeSystem
 {
     readonly GameContext _context;

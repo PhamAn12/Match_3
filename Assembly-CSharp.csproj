@@ -64,6 +64,7 @@
     <Compile Include="Assets\Generated\Game\Components\GameBoadGameComponent.cs" />
     <Compile Include="Assets\Generated\Game\Components\GameBoadGameElementComponent.cs" />
     <Compile Include="Assets\Generated\Game\Components\GamePositionComponent.cs" />
+    <Compile Include="Assets\Generated\Game\Components\GameViewComponent.cs" />
     <Compile Include="Assets\Generated\Game\GameAttribute.cs" />
     <Compile Include="Assets\Generated\Game\GameComponentsLookup.cs" />
     <Compile Include="Assets\Generated\Game\GameContext.cs" />
@@ -78,9 +79,12 @@
     <Compile Include="Assets\Resources\Components\BoadGameComponent.cs" />
     <Compile Include="Assets\Resources\Components\BoadGameElementComponent.cs" />
     <Compile Include="Assets\Resources\Components\PositionComponent.cs" />
-    <Compile Include="Assets\Resources\Systems\AddViewSystems.cs" />
+    <Compile Include="Assets\Resources\Components\ViewComponent.cs" />
+    <Compile Include="Assets\Resources\Systems\AddViewSystem.cs" />
     <Compile Include="Assets\Resources\Systems\BoardSystems.cs" />
     <Compile Include="Assets\Resources\Systems\CreateBoardSystem.cs" />
+    <Compile Include="Assets\Resources\Systems\RenderSpriteSystems.cs" />
+    <Compile Include="Assets\Resources\Systems\SetViewPositionSystem.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\RandomBoardElements.cs" />
     <Compile Include="Assets\Scripts\Test\GenarateBrick.cs" />

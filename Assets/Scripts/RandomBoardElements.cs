@@ -4,10 +4,11 @@ using UnityEngine;
 
 public static class RandomBoardElements 
 {
-    private static  GameObject block;
+    // private static  GameObject block;
     static readonly string[] _items = {
-        "CellBlock",
-        "Piece0"
+        "Prefabs/GenerateBrick",
+        "Prefabs/Piece0",
+        "Prefabs/Block_2"
         
     };
     public static GameEntity CreateGameBoard(this GameContext context)
