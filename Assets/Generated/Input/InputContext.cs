@@ -6,9 +6,10 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class InputContext : Entitas.Context<InputEntity> {
+public sealed partial class Context : Entitas.Context<InputEntity> {
+    internal readonly GameContext game;
 
-    public InputContext()
+    public Context()
         : base(
             InputComponentsLookup.TotalComponents,
             0,

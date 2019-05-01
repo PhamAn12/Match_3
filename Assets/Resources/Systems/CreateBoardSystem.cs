@@ -28,9 +28,9 @@ public class CreateBoardSystem : ReactiveSystem<GameEntity>, IInitializeSystem
         var gameBoard = _context.CreateGameBoard().boadGame;
         UnityEngine.Debug.Log(gameBoard.row);
         UnityEngine.Debug.Log(gameBoard.columns);
-        for (var r = 0; r < gameBoard.row; r = r + 2)
+        for (var r = 0; r < gameBoard.row; r++)
         {
-            for (var c = 0; c < gameBoard.columns; c = c + 2)
+            for (var c = 0; c < gameBoard.columns; c++)
             {              
                 _context.CreateRandomPiece(r, c);
                 

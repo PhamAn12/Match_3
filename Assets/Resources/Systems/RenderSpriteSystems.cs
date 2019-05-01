@@ -25,15 +25,12 @@ public class RenderSpriteSystems : ReactiveSystem<GameEntity>
 
     protected override bool Filter(GameEntity entity)
     {
-        return true;
+        return entity.hasAsset && entity.hasView;
     }
 
     protected override void Execute(List<GameEntity> entities)
-    {
-        
-        Debug.Log("SL  " + entities.Count);
-        int i = 0, j = 0;
-        
+    {       
+       
         foreach (var e in entities)
         {
             
@@ -54,12 +51,7 @@ public class RenderSpriteSystems : ReactiveSystem<GameEntity>
                  Debug.Log("can't not initialize");
             }
 
-            i++;
-            if (i >= 5)
-            {
-                j++;
-                i--;
-            }
+            
 
         }
     }

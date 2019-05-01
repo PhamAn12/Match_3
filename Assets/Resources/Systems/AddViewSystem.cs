@@ -21,7 +21,7 @@ public class AddViewSystem : ReactiveSystem<GameEntity>
 
     protected override bool Filter(GameEntity entity)
     {
-        return true;
+        return entity.hasAsset && !entity.hasView;
 
     }
 
@@ -30,12 +30,30 @@ public class AddViewSystem : ReactiveSystem<GameEntity>
         Debug.Log("inside Execute");
         foreach (var e in entities)
         {
-            Debug.Log(entities.Count);
-            GameObject go = new GameObject("Game View");
-            Debug.Log("GO" + go);
-            go.transform.SetParent(_viewContainer,false);
-            e.AddView(go);
-            go.Link(e);
+            //Debug.Log(entities.Count);
+            //GameObject go = new GameObject("Game View");
+            //Debug.Log("GO" + go);
+            //go.transform.SetParent(_viewContainer, false);
+            //e.AddView(go);
+            //go.Link(e);
+            var asset = Resources.Load<GameObject>(e.asset.name);
+            GameObject gameObject = null;
+            try
+            {
+                gameObject = UnityEngine.Object.Instantiate(asset);
+
+            }
+            catch (Exception)
+            {
+                Debug.Log("Cannot instantiate " + e.asset.name);
+            }
+
+            if (gameObject != null)
+            {
+                gameObject.transform.SetParent(_viewContainer, false);
+                e.AddView(gameObject);
+                gameObject.Link(e);
+            }
         }
     }
 }

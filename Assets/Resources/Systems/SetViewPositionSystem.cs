@@ -27,7 +27,7 @@ public class SetViewPositionSystem : ReactiveSystem<GameEntity>
         foreach (var e in entities)
         {
             var pos = e.position;
-            e.view.gameObject.transform.position = new Vector3(pos.value.x,pos.value.y,0f);
+            e.view.gameObject.transform.position = new Vector3(pos.value.x * 1.5f,pos.value.y *1.5f);
             Debug.Log(pos);
             
             Debug.Log(pos.value.x + "  " + pos.value.y);

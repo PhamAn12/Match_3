@@ -16,7 +16,7 @@ public sealed partial class InputMatcher {
           return Entitas.Matcher<InputEntity>.AllOf(matchers);
     }
 
-    public static Entitas.IAnyOfMatcher<InputEntity> AnyOf(params int[] indices) {
+    public static Entitas.IAnyOfMatcher<InputEntity> AnyOf(Context input, params int[] indices) {
           return Entitas.Matcher<InputEntity>.AnyOf(indices);
     }
 
