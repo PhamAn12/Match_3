@@ -2,9 +2,10 @@
 
 public class InputSystem : Feature
 {
-    public InputSystem(GameContext Game)
+    public InputSystem(InputContext Input, GameContext gameContext)
     {
-        Add(new InputMouseSystem(Game));        
+        Add(new InputMouseSystem(Input));
+        Add(new ProcessInputSystem(Input, gameContext));
     }
 }
     

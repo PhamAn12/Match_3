@@ -11,7 +11,9 @@ public class GameController : MonoBehaviour
         var contexts = Contexts.sharedInstance;
         
         
-        _systems = new Feature("Systems").Add(new BoardSystems(contexts.game));
+        _systems = new Feature("Systems")
+            .Add(new BoardSystems(contexts.game)
+            .Add(new InputSystem(contexts.input, contexts.game)));
         _systems.Initialize();
         
 
@@ -19,8 +21,6 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        //_systems.Execute();
-        //Systems s = new Feature("Systems").Add(new RenderSpriteSystems(contexts.game));
         _systems.Execute(); 
     }
 }

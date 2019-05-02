@@ -6,9 +6,8 @@ public class BoardSystems : Feature
     {
         Add(new CreateBoardSystem(Game));
         Add(new AddViewSystem(Game));
-     //   Add(new RenderSpriteSystems(Game));
         Add(new SetViewPositionSystem(Game));
-        Add(new InputSystem(Game));
+    //    Add(new InputSystem(Game));
     //    Add(new RenderSpriteSystems(Game));
         
     }

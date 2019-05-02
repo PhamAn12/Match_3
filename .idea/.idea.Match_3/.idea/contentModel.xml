@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$PROJECT_DIR$/../Library/Caches/Rider2018.3/extResources" t="IncludeRecursive" />
+    <e p="$PROJECT_DIR$/../Library/Caches/Rider2018.3/resharper-host/local/Transient/ReSharperHost/v183/SolutionCaches/_Match_3.-1922237840.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="DesperateDevs" t="Include">
+          <e p="Compile.cs" t="Include" />
+        </e>
+        <e p="Entitas" t="Include">
+          <e p="Entitas.xml" t="Include" />
+          <e p="LICENSE.txt" t="Include" />
+        </e>
+        <e p="Generated" t="Include">
+          <e p="Components" t="Include">
+            <e p="Interfaces" t="Include">
+              <e p="IInputEntity.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Contexts.cs" t="Include" />
+          <e p="Feature.cs" t="Include" />
+          <e p="Game" t="Include">
+            <e p="Components" t="Include">
+              <e p="GameAssetComponent.cs" t="Include" />
+              <e p="GameBoadGameComponent.cs" t="Include" />
+              <e p="GameBoadGameElementComponent.cs" t="Include" />
+              <e p="GameBurstModeComponent.cs" t="Include" />
+              <e p="GameDestroyedComponent.cs" t="Include" />
+              <e p="GameInputComponent.cs" t="Include" />
+              <e p="GamePositionComponent.cs" t="Include" />
+              <e p="GameViewComponent.cs" t="Include" />
+            </e>
+            <e p="GameAttribute.cs" t="Include" />
+            <e p="GameComponentsLookup.cs" t="Include" />
+            <e p="GameContext.cs" t="Include" />
+            <e p="GameEntity.cs" t="Include" />
+            <e p="GameMatcher.cs" t="Include" />
+          </e>
+          <e p="Input" t="Include">
+            <e p="Components" t="Include">
+              <e p="InputInputComponent.cs" t="Include" />
+            </e>
+            <e p="InputAttribute.cs" t="Include" />
+            <e p="InputComponentsLookup.cs" t="Include" />
+            <e p="InputContext.cs" t="Include" />
+            <e p="InputEntity.cs" t="Include" />
+            <e p="InputMatcher.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Resources" t="Include">
+          <e p="Components" t="Include">
+            <e p="AssetComponent.cs" t="Include" />
+            <e p="BoadGameComponent.cs" t="Include" />
+            <e p="BoadGameElementComponent.cs" t="Include" />
+            <e p="BurstModeComponent.cs" t="Include" />
+            <e p="DestroyedComponent.cs" t="Include" />
+            <e p="InputComponent.cs" t="Include" />
+            <e p="PositionComponent.cs" t="Include" />
+            <e p="ViewComponent.cs" t="Include" />
+          </e>
+          <e p="Systems" t="Include">
+            <e p="AddViewSystem.cs" t="Include" />
+            <e p="BoardSystems.cs" t="Include" />
+            <e p="CreateBoardSystem.cs" t="Include" />
+            <e p="Input" t="Include">
+              <e p="InputMouseSystem.cs" t="Include" />
+              <e p="InputSystem.cs" t="Include" />
+              <e p="ProcessInputSystem.cs" t="Include" />
+            </e>
+            <e p="RenderSpriteSystems.cs" t="Include" />
+            <e p="SetViewPositionSystem.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="GameController.cs" t="Include" />
+          <e p="RandomBoardElements.cs" t="Include" />
+          <e p="Test" t="Include">
+            <e p="GenarateBrick.cs" t="Include" />
+            <e p="GenerateBlock.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="Match_3.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+    </e>
+  </component>
+</project>

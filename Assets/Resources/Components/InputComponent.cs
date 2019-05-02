@@ -1,6 +1,7 @@
 ﻿using Entitas;
 using UnityEngine;
 
+[Input, Game]
 public class InputComponent : IComponent
 {
     public int x;

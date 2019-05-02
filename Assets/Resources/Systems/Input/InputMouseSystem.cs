@@ -1,20 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Entitas;
+
 public class InputMouseSystem : IExecuteSystem, ICleanupSystem
 {
-    GameContext _context;
-
-    public InputMouseSystem(Context Input)
+    private readonly InputContext _context;
+    private readonly IGroup<InputEntity> _inputs;
+    public InputMouseSystem(InputContext Input)
     {
-        _context = Input.game;
-        
-    }
-
-    public InputMouseSystem(GameContext game)
-    {
-        _context = game;
+        _context = Input;
+        _inputs = _context.GetGroup(InputMatcher.Input);
     }
 
     public void Cleanup()
@@ -24,14 +21,18 @@ public class InputMouseSystem : IExecuteSystem, ICleanupSystem
 
     public void Execute()
     {
-        if (Input.GetMouseButtonDown(0))
+        var elements = _inputs.GetEntities();
+        var mousePosition = Input.mousePosition;
+        var hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition),Vector2.zero,100);
+        //Debug.Log("HIT Collider" + hit.collider);
+        if (hit.collider != null)
         {
-            Debug.Log("Left Mouse Click");
+            var pos = hit.collider.transform.position;
+            
+            _context.CreateEntity().AddInput((int) pos.x, (int) pos.y);
+            Debug.Log(elements);
+            Debug.Log("POS   " + pos);
         }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            Debug.Log("Right Mouse CLick");
-        }
+        
     }
 }

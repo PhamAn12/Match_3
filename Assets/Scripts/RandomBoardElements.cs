@@ -14,7 +14,7 @@ public static class RandomBoardElements
     public static GameEntity CreateGameBoard(this GameContext context)
     {
         var entity = context.CreateEntity();
-        entity.AddBoadGame(6, 8);
+        entity.AddBoadGame(8, 8);
         return entity;
     }
     
