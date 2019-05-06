@@ -11,7 +11,7 @@ public partial class InputEntity {
     public InputComponent input { get { return (InputComponent)GetComponent(InputComponentsLookup.Input); } }
     public bool hasInput { get { return HasComponent(InputComponentsLookup.Input); } }
 
-    public void AddInput(int newX, int newY) {
+    public void AddInput(float newX, float newY) {
         var index = InputComponentsLookup.Input;
         var component = (InputComponent)CreateComponent(index, typeof(InputComponent));
         component.x = newX;
@@ -19,7 +19,7 @@ public partial class InputEntity {
         AddComponent(index, component);
     }
 
-    public void ReplaceInput(int newX, int newY) {
+    public void ReplaceInput(float newX, float newY) {
         var index = InputComponentsLookup.Input;
         var component = (InputComponent)CreateComponent(index, typeof(InputComponent));
         component.x = newX;

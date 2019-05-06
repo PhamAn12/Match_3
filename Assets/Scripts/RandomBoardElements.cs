@@ -21,7 +21,7 @@ public static class RandomBoardElements
     public static GameEntity CreateRandomPiece(this GameContext context, int x, int y) {
         var entity = context.CreateEntity();
         
-        entity.AddPosition(new Vector2(x, y));
+        entity.AddPosition(new Vector2(x * 1.5f, y * 1.5f));
         //GameObject obj = Resources.Load("CellBlock") as GameObject;
 
        // Instantiate(obj);

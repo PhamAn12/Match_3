@@ -11,7 +11,7 @@ public partial interface IInputEntity {
     InputComponent input { get; }
     bool hasInput { get; }
 
-    void AddInput(int newX, int newY);
-    void ReplaceInput(int newX, int newY);
+    void AddInput(float newX, float newY);
+    void ReplaceInput(float newX, float newY);
     void RemoveInput();
 }
