@@ -9,11 +9,12 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         var contexts = Contexts.sharedInstance;
-        
-        
+
+
         _systems = new Feature("Systems")
+            .Add(new InputSystem(contexts.input, contexts.game)
             .Add(new BoardSystems(contexts.game)
-            .Add(new InputSystem(contexts.input, contexts.game)));
+            ));
         _systems.Initialize();
         
 

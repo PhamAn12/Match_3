@@ -24,14 +24,14 @@ public class ProcessInputSystem : ReactiveSystem<InputEntity>
     {
         var inputEntity = entities.SingleEntity();
         var input = inputEntity.input;
-        Debug.Log("INPUT" + input + "INPUT ENTITY" + inputEntity);
-
-        Debug.Log("position of input entity :" + input.x + "  " + input.y);
+//        Debug.Log("INPUT" + input + "INPUT ENTITY" + inputEntity);
+//
+//        Debug.Log("position of input entity :" + input.x + "  " + input.y);
         foreach (var e in _context.GetEntitiesWithPosition(new Vector2(input.x,input.y)))
         {
             
-            Debug.Log("list: " + e.ToString());
-            Debug.Log("position of game entity :" + e.position.value.x + "  " + e.position.value.y);
+//            Debug.Log("list: " + e.ToString());
+//            Debug.Log("position of game entity :" + e.position.value.x + "  " + e.position.value.y);
             e.isTabbed = true;
         //    e.isDestroyed = true;
 

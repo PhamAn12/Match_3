@@ -1,17 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using Entitas;
 using UnityEngine;
 
 public class CheckDeleteSystem : ReactiveSystem<GameEntity>
 {
     private readonly GameContext _context;
+
+    private IGroup<GameEntity> _blockGroup;
     public CheckDeleteSystem(GameContext Game) : base(Game)
     {
         _context = Game;
+        _context.GetGroup(GameMatcher.AllOf(GameMatcher.Position,GameMatcher.BoadGameElement).NoneOf(GameMatcher.Tabbed));
+
     }  
-    protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context) {
-        return context.CreateCollector(GameMatcher.AnyOf(GameMatcher.Position,GameMatcher.Tabbed));
+    protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
+    {
+        //return context.GetGroup(GameMatcher.Position);
+        return context.CreateCollector(GameMatcher.Tabbed);
     }
 
     protected override bool Filter(GameEntity entity)
@@ -50,17 +57,20 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
 //            } 
 //        } 
 //        arrayGameEntities[4, 6].isDestroyed = true;
-//        var name = entities[0].asset.name;
-//        var x = entities[0].position.value.x;
-//        var y = entities[0].position.value.y;
-//        
-//        Debug.Log(name + " " + x + " " + y);
+        var name = entities[0].asset.name;
+        var x = entities[0].position.value.x;
+        var y = entities[0].position.value.y;
+
+        //Debug.Log("ABC" + _blockGroup.GetEntities());
+        GameEntity[] blockGroup = _blockGroup.GetEntities();
+        Debug.Log(blockGroup.ToString());
+        Debug.Log("check : " + name + " " + x + " " + y);
         foreach (var e in entities)
-        {    
-            Debug.Log("eeee" + e.isTabbed);
-//            if(e.isTabbed)
-//                Debug.Log("asssss" + e.asset.name);
+        {
+            
 
         }
+
+        
     }
 }

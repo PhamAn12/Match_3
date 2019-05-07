@@ -29,7 +29,7 @@ public class InputMouseSystem : IExecuteSystem, ICleanupSystem
                 var pos = hit.collider.transform.position;
             
                 _context.CreateEntity().AddInput( pos.x,  pos.y);
-                Debug.Log(elements);
+//                Debug.Log(elements);
                 Debug.Log("POS   " + pos);
             }
         }

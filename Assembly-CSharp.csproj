@@ -356,6 +356,18 @@
     <Reference Include="DesperateDevs.Networking">
       <HintPath>/Users/ma084/Match_3/Assets/DesperateDevs/DesperateDevs.Networking.dll</HintPath>
     </Reference>
+    <Reference Include="DOTween">
+      <HintPath>/Users/ma084/Match_3/Assets/DOTween/DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween43">
+      <HintPath>/Users/ma084/Match_3/Assets/DOTween/DOTween43.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween50">
+      <HintPath>/Users/ma084/Match_3/Assets/DOTween/DOTween50.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween46">
+      <HintPath>/Users/ma084/Match_3/Assets/DOTween/DOTween46.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>/Users/ma084/Match_3/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
@@ -364,18 +376,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>/Users/ma084/Match_3/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween46">
-      <HintPath>/Users/ma084/Match_3/Assets/DOTween/DOTween46.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween50">
-      <HintPath>/Users/ma084/Match_3/Assets/DOTween/DOTween50.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween43">
-      <HintPath>/Users/ma084/Match_3/Assets/DOTween/DOTween43.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween">
-      <HintPath>/Users/ma084/Match_3/Assets/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>/Applications/Unity/Unity.app/Contents/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
