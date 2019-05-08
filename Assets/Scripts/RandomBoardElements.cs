@@ -26,7 +26,8 @@ public static class RandomBoardElements
 
        // Instantiate(obj);
         entity.AddAsset(_items[Random.Range(0, _items.Length)]);
-        
+        entity.isMovable = true;
+        entity.isBoadGameElement = true;
         //var block_instance = Instantiate(block) as GameObject;
         
         //block_instance.transform.position = new Vector3(3,3,0); 

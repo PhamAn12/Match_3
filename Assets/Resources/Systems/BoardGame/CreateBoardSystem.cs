@@ -32,19 +32,6 @@ public class CreateBoardSystem : ReactiveSystem<GameEntity>, IInitializeSystem
             {              
                 _context.CreateRandomPiece(r, c);
                 
-//                GameObject GO = Resources.Load(_items[Random.Range(0, _items.Length)]) as GameObject;
-//                GO.transform.position = new Vector3(r - 4,c - 3, 0);
-//                try
-//                {
-//                    UnityEngine.Object.Instantiate(GO);
-//                    
-//                    
-//                }
-//                catch (Exception e)
-//                {
-//                    Debug.Log("can't not initialize");
-//                }
-                
             }
 
             

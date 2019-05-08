@@ -6,7 +6,7 @@ public class InputSystem : Feature
     {
         Add(new InputMouseSystem(Input));
         Add(new ProcessInputSystem(Input, gameContext));
-        Add(new CheckDeleteSystem(gameContext));
+        //Add(new CheckDeleteSystem(gameContext));
     }
 }
     

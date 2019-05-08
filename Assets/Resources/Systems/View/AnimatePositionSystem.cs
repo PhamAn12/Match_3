@@ -24,9 +24,9 @@ public sealed class AnimatePositionSystem : ReactiveSystem<GameEntity> {
         {
             Debug.Log("BCA" + e.position.value.x);
             var pos = e.position;
-            var isTopRow = pos.value.y == _context.CreateGameBoard().boadGame.row - 1;
+            var isTopRow = pos.value.y == _context.CreateGameBoard().boadGame.row - 1.5f;
             if (isTopRow) {
-                e.view.gameObject.transform.localPosition = new Vector3(pos.value.x, pos.value.y + 1);
+                e.view.gameObject.transform.localPosition = new Vector3(pos.value.x, pos.value.y + 1.5f);
             }
             e.view.gameObject.transform.DOMove(new Vector3(pos.value.x, pos.value.y, 0f), 0.3f);
         }

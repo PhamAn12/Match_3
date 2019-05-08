@@ -32,13 +32,13 @@ public class RemoveViewSystem : ReactiveSystem<GameEntity> {
         var color = spriteRenderer.color;
         color.a = 0f;
         spriteRenderer.material.DOColor(color, 0.2f);
-        gameObject.Unlink();
-        Object.Destroy(gameObject);
-//        gameObject.transform
-//            .DOScale(Vector3.one * 1.5f, 0.2f)
-//            .OnComplete(() => {
-//                gameObject.Unlink();
-//                Object.Destroy(gameObject);
-//            });
+//        gameObject.Unlink();
+//        Object.Destroy(gameObject);
+        gameObject.transform
+            .DOScale(Vector3.one * 1.5f, 0.2f)
+            .OnComplete(() => {
+                gameObject.Unlink();
+                Object.Destroy(gameObject);
+            });
     }
 }
