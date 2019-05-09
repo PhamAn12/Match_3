@@ -31,28 +31,28 @@ public class FallSystem : ReactiveSystem<GameEntity>
         }
         
         
-//        var gameBoard = _context.CreateGameBoard().boadGame;
-//        Debug.Log(gameBoard.columns + "va" + gameBoard.row);
-//        for (int c = 0; c < gameBoard.columns; c++) {
-//            for (int r = 1; r < gameBoard.row; r++) {
-//                var position = new Vector2(c, r);
-//                var movables = _context.GetEntitiesWithPosition(position)
-//                    .Where(e => e.isMovable)
-//                    .ToArray();
-//                Debug.Log("all movables" + movables);
-//                Debug.Log("Count" + movables.Count());
-//                foreach (var e in movables) {
-//                    Debug.Log("new Pos" + e);
-//
-//                    MoveDown(e, position);
-//                }
-//            }
-//        }
+        var gameBoard = _context.CreateGameBoard().boadGame;
+        Debug.Log(gameBoard.columns + "va" + gameBoard.row);
+        for (var c = 0*1.5f; c < gameBoard.columns*1.5f; c += 1.5f) {
+            for (var r = 1*1.5f; r < gameBoard.row*1.5f; r += 1.5f) {
+                var position = new Vector2(c, r);
+                //Debug.Log(position.x + " and " + position.y);
+                var movables = _context.GetEntitiesWithPosition(position)
+                    .ToArray();
+                //Debug.Log("all movables" + movables[0].asset.name);
+                //Debug.Log("Count" + movables.Count());
+                foreach (var e in movables) {
+                    Debug.Log("new Pos" + e);
+
+                    MoveDown(e, position);
+                }
+            }
+        }
     }
 
     void MoveDown(GameEntity entity, Vector2 position)
     {
-        var nextRowPos = CheckEmptyPosition.GetEmptyRow(_context, position);
+        var nextRowPos = CheckEmptyPosition.GetNextEmptyRow(_context, position);
         //Debug.Log("new Pos" + nextRowPos);
         if (nextRowPos != position.y)
         {

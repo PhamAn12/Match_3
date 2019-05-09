@@ -9,6 +9,7 @@ public class BoardSystems : Feature
     {       
         Add(new CreateBoardSystem(Game));
         Add(new FallSystem(Game));
+        Add(new FillSystem(Game));
         Add(new ViewSystem(Game));
 //        Add(new AddViewSystem(Game));
 //        Add(new SetViewPositionSystem(Game));

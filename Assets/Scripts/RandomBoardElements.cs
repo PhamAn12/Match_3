@@ -18,7 +18,7 @@ public static class RandomBoardElements
         return entity;
     }
     
-    public static GameEntity CreateRandomPiece(this GameContext context, int x, int y) {
+    public static GameEntity CreateRandomPiece(this GameContext context, float x, float y) {
         var entity = context.CreateEntity();
         
         entity.AddPosition(new Vector2(x * 1.5f, y * 1.5f));

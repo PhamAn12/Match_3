@@ -4,7 +4,7 @@ namespace DefaultNamespace
 {
     public class CheckEmptyPosition
     {
-        public static float GetEmptyRow(GameContext context, Vector2 position)
+        public static float GetNextEmptyRow(GameContext context, Vector2 position)
         {
             position.y -= 1.5f;
 
