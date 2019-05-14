@@ -79,6 +79,7 @@
               <e p="FallSystem.cs" t="Include" />
               <e p="FillSystem.cs" t="Include" />
             </e>
+            <e p="DestroyBoardGameSystem.cs" t="Include" />
             <e p="DestroyEntitySystem.cs" t="Include" />
             <e p="Input" t="Include">
               <e p="InputMouseSystem.cs" t="Include" />

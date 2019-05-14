@@ -107,8 +107,12 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
             }
 
             if (flag == 1)
+                
                 e.isDestroyed = true;
-
+            else
+            {
+                e.isTabbed = false;
+            }
         }
 
         

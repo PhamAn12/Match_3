@@ -10,6 +10,7 @@ public class ViewSystem : Feature
         Add(new RemoveViewSystem(gameContext));
         Add(new AnimatePositionSystem(gameContext));
         Add(new DestroyEntitySystem(gameContext));
+        Add(new DestroyBoardGameSystem(gameContext));
         //Add(new CheckDeleteSystem(gameContext));
     }
 }

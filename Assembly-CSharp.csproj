@@ -98,6 +98,7 @@
     <Compile Include="Assets\Resources\Systems\BoardGame\CreateBoardSystem.cs" />
     <Compile Include="Assets\Resources\Systems\BoardGame\FallSystem.cs" />
     <Compile Include="Assets\Resources\Systems\BoardGame\FillSystem.cs" />
+    <Compile Include="Assets\Resources\Systems\DestroyBoardGameSystem.cs" />
     <Compile Include="Assets\Resources\Systems\DestroyEntitySystem.cs" />
     <Compile Include="Assets\Resources\Systems\Input\InputMouseSystem.cs" />
     <Compile Include="Assets\Resources\Systems\Input\InputSystem.cs" />

@@ -26,6 +26,7 @@ public class CreateBoardSystem : ReactiveSystem<GameEntity>, IInitializeSystem
     {
         
         var gameBoard = _context.CreateGameBoard().boadGame;
+      
         for (var r = 0; r < gameBoard.row; r++)
         {
             for (var c = 0; c < gameBoard.columns; c++)

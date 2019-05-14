@@ -40,7 +40,7 @@ public class InputMouseSystem : IExecuteSystem, ICleanupSystem
     {
         foreach (var e in _inputs.GetEntities())
         {
-            Debug.Log("On cleanup system" + e.ToString());
+            Debug.Log("On cleanup system");
             e.Destroy();
         }
     }
