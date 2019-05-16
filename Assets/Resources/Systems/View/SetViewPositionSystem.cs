@@ -28,9 +28,9 @@ public class SetViewPositionSystem : ReactiveSystem<GameEntity>
         {
             var pos = e.position;
             e.view.gameObject.transform.position = new Vector3(pos.value.x * 1f,pos.value.y * 1f);
-            Debug.Log(pos);
+//            Debug.Log(pos);
             
-            Debug.Log(pos.value.x + "  " + pos.value.y);
+//            Debug.Log(pos.value.x + "  " + pos.value.y);
         }
     }
 }

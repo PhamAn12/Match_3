@@ -20,16 +20,57 @@ public sealed class AnimatePositionSystem : ReactiveSystem<GameEntity> {
     }
 
     protected override void Execute(List<GameEntity> entities) {
-        var topRow = _context.CreateGameBoard().boadGame.row * 1.5f;
+        
+        List<GameEntity> isDestroyedEntities = new List<GameEntity>();
+        
+        var gameBoard = _context.CreateGameBoard().boadGame;
+        Debug.Log("gameboard columns:" + gameBoard.columns );
+        
         foreach (var e in entities)
         {
-            //Debug.Log("BCA" + e.position.value.x);
-            var pos = e.position;
-            var isTopRow = pos.value.y == topRow - 1.5f;
-            if (isTopRow) {
-                e.view.gameObject.transform.localPosition = new Vector3(pos.value.x, pos.value.y + 1.5f);
-            }
-            e.view.gameObject.transform.DOMove(new Vector3(pos.value.x, pos.value.y, 0f), 2.3f);
+            checkDown(4.5f,e);
+            
         }
+
     }
+
+    private void checkDown(float i, GameEntity e)
+    {
+        var topRow = _context.CreateGameBoard().boadGame.row * 1.5f;
+        Debug.Log("E" + e);
+        Debug.Log( "Cood e    " + "x : " + e.position.value.x + " y : " + e.position.value.y);
+            
+        var pos = e.position;
+        var isTopRow = (pos.value.y.Equals(topRow - 1.5f));
+        var isSecondRow = (pos.value.y.Equals(topRow - 3f));
+        var isThirdRow = (pos.value.y.Equals(topRow - 4.5f));
+        if (isSecondRow) {
+            Debug.Log("posX2in : " + pos.value.x + "posY2in : " + pos.value.y);
+            e.view.gameObject.transform.localPosition = new Vector3(pos.value.x, pos.value.y + i);                
+                
+            Debug.Log("x : " + e.view.gameObject.transform.localPosition.x + "y : " + e.view.gameObject.transform.localPosition.y);
+                
+        }
+            
+        if (isTopRow) {
+            Debug.Log("posXin : " + pos.value.x + "posYin : " + pos.value.y);
+            e.view.gameObject.transform.localPosition = new Vector3(pos.value.x, pos.value.y + i);                
+                
+            Debug.Log("x : " + e.view.gameObject.transform.localPosition.x + "y : " + e.view.gameObject.transform.localPosition.y);
+                
+        }
+        
+        if (isThirdRow) {
+            Debug.Log("posXin : " + pos.value.x + "posYin : " + pos.value.y);
+            e.view.gameObject.transform.localPosition = new Vector3(pos.value.x, pos.value.y + i);                
+                
+            Debug.Log("x : " + e.view.gameObject.transform.localPosition.x + "y : " + e.view.gameObject.transform.localPosition.y);
+                
+        }
+
+        Debug.Log("posXout : " + pos.value.x + "posYout : " + pos.value.y);
+        e.view.gameObject.transform.DOMove(new Vector3(pos.value.x, pos.value.y, 0f),
+            6.3f);
+    }
+    
 }

@@ -27,16 +27,13 @@ public sealed class FillSystem : ReactiveSystem<GameEntity> {
         for (var c = 0*1.5f; c < gameBoard.columns *1.5f; c = c + 1.5f) {
             var position = new Vector2(c, gameBoard.row*1.5f);
             var nextRowPos = CheckEmptyPosition.GetNextEmptyRow(_context, position);
-            Debug.Log("position : " + position + " nextRowpos : " + nextRowPos + " row : " + gameBoard.row*1.5f);
-            //if(nextRowPos != 12)
-            //{
-            //    Debug.Log("C : " + c/1.5f + "next pos : " + nextRowPos/1.5f);
-            //    _context.CreateRandomPiece(c/1.5f, nextRowPos/1.5f);
-            //}
-            while(Math.Abs(nextRowPos - gameBoard.row*1.5f) > 0) {
-                Debug.Log("c : " + c  + " nextpost" + nextRowPos);
+//            Debug.Log("position : " + position + " nextRowpos : " + nextRowPos + " row : " + gameBoard.row*1.5f);
+            
+            while(nextRowPos != gameBoard.row*1.5f) {
+                //Debug.Log("c truoc : " + c  + " nextpos truoc : " + nextRowPos );
                 _context.CreateRandomPiece(c/1.5f, nextRowPos/1.5f);
                 nextRowPos = CheckEmptyPosition.GetNextEmptyRow(_context, position);
+//                Debug.Log("c sau : " + c  + " nextpos sau : " + nextRowPos );
             }
         }
     }
