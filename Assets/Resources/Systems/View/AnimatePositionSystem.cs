@@ -44,33 +44,33 @@ public sealed class AnimatePositionSystem : ReactiveSystem<GameEntity> {
         var isTopRow = (pos.value.y.Equals(topRow - 1.5f));
         var isSecondRow = (pos.value.y.Equals(topRow - 3f));
         var isThirdRow = (pos.value.y.Equals(topRow - 4.5f));
-        if (isSecondRow) {
-            Debug.Log("posX2in : " + pos.value.x + "posY2in : " + pos.value.y);
-            e.view.gameObject.transform.localPosition = new Vector3(pos.value.x, pos.value.y + i);                
+        //if (isSecondRow) {
+        //    Debug.Log("posX2in : " + pos.value.x + "posY2in : " + pos.value.y);
+        //    e.view.gameObject.transform.localPosition = new Vector3(pos.value.x, pos.value.y + i);                
                 
-            Debug.Log("x : " + e.view.gameObject.transform.localPosition.x + "y : " + e.view.gameObject.transform.localPosition.y);
+        //    //Debug.Log("x : " + e.view.gameObject.transform.localPosition.x + "y : " + e.view.gameObject.transform.localPosition.y);
                 
-        }
+        //}
             
-        if (isTopRow) {
+        if (isTopRow || isSecondRow || isThirdRow) {
             Debug.Log("posXin : " + pos.value.x + "posYin : " + pos.value.y);
             e.view.gameObject.transform.localPosition = new Vector3(pos.value.x, pos.value.y + i);                
                 
-            Debug.Log("x : " + e.view.gameObject.transform.localPosition.x + "y : " + e.view.gameObject.transform.localPosition.y);
+            //Debug.Log("x : " + e.view.gameObject.transform.localPosition.x + "y : " + e.view.gameObject.transform.localPosition.y);
                 
         }
         
-        if (isThirdRow) {
-            Debug.Log("posXin : " + pos.value.x + "posYin : " + pos.value.y);
-            e.view.gameObject.transform.localPosition = new Vector3(pos.value.x, pos.value.y + i);                
+        //if (isThirdRow) {
+        //    Debug.Log("posXin : " + pos.value.x + "posYin : " + pos.value.y);
+        //    e.view.gameObject.transform.localPosition = new Vector3(pos.value.x, pos.value.y + i);                
                 
-            Debug.Log("x : " + e.view.gameObject.transform.localPosition.x + "y : " + e.view.gameObject.transform.localPosition.y);
+        //    //Debug.Log("x : " + e.view.gameObject.transform.localPosition.x + "y : " + e.view.gameObject.transform.localPosition.y);
                 
-        }
+        //}
 
         Debug.Log("posXout : " + pos.value.x + "posYout : " + pos.value.y);
         e.view.gameObject.transform.DOMove(new Vector3(pos.value.x, pos.value.y, 0f),
             6.3f);
     }
-    
+
 }
