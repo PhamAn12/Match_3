@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Entitas;
 using UnityEngine;
 
 public static class RandomBoardElements 
@@ -8,7 +9,8 @@ public static class RandomBoardElements
     static readonly string[] _items = {
         "Prefabs/GenerateBrick",
         "Prefabs/Piece0",
-        "Prefabs/Block_2"
+        "Prefabs/Block_2",
+        "Prefabs/Block_1"
         
     };
     public static GameEntity CreateGameBoard(this GameContext context)

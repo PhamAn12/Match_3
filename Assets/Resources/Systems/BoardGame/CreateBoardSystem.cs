@@ -32,7 +32,6 @@ public class CreateBoardSystem : ReactiveSystem<GameEntity>, IInitializeSystem
             for (var c = 0; c < gameBoard.columns; c++)
             {              
                 _context.CreateRandomPiece(r, c);
-                
             }
 
             

@@ -47,6 +47,16 @@
             <e p="GameEntity.cs" t="Include" />
             <e p="GameMatcher.cs" t="Include" />
           </e>
+          <e p="GameState" t="Include">
+            <e p="Components" t="Include">
+              <e p="GameStateScoreComponent.cs" t="Include" />
+            </e>
+            <e p="GameStateAttribute.cs" t="Include" />
+            <e p="GameStateComponentsLookup.cs" t="Include" />
+            <e p="GameStateContext.cs" t="Include" />
+            <e p="GameStateEntity.cs" t="Include" />
+            <e p="GameStateMatcher.cs" t="Include" />
+          </e>
           <e p="Input" t="Include">
             <e p="Components" t="Include">
               <e p="InputInputComponent.cs" t="Include" />
@@ -69,6 +79,7 @@
             <e p="InteractiveComponent.cs" t="Include" />
             <e p="MovableComponent.cs" t="Include" />
             <e p="PositionComponent.cs" t="Include" />
+            <e p="ScoreComponent.cs" t="Include" />
             <e p="TabbedComponent.cs" t="Include" />
             <e p="ViewComponent.cs" t="Include" />
           </e>
@@ -81,6 +92,10 @@
             </e>
             <e p="DestroyBoardGameSystem.cs" t="Include" />
             <e p="DestroyEntitySystem.cs" t="Include" />
+            <e p="GameState" t="Include">
+              <e p="GameStateSystems.cs" t="Include" />
+              <e p="ScoreSystem.cs" t="Include" />
+            </e>
             <e p="Input" t="Include">
               <e p="InputMouseSystem.cs" t="Include" />
               <e p="InputSystem.cs" t="Include" />
@@ -101,6 +116,7 @@
           <e p="CheckEmptyPosition.cs" t="Include" />
           <e p="GameController.cs" t="Include" />
           <e p="RandomBoardElements.cs" t="Include" />
+          <e p="ScoreLabelController.cs" t="Include" />
           <e p="Test" t="Include">
             <e p="GenarateBrick.cs" t="Include" />
             <e p="GenerateBlock.cs" t="Include" />

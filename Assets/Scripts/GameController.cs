@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
 
         _systems = new Feature("Systems")
             .Add(new InputSystem(contexts.input, contexts.game)
-            .Add(new BoardSystems(contexts.game)
+            .Add(new BoardSystems(contexts.game, contexts.gameState)
             ));
         _systems.Initialize();
         

@@ -77,6 +77,12 @@
     <Compile Include="Assets\Generated\Game\GameContext.cs" />
     <Compile Include="Assets\Generated\Game\GameEntity.cs" />
     <Compile Include="Assets\Generated\Game\GameMatcher.cs" />
+    <Compile Include="Assets\Generated\GameState\Components\GameStateScoreComponent.cs" />
+    <Compile Include="Assets\Generated\GameState\GameStateAttribute.cs" />
+    <Compile Include="Assets\Generated\GameState\GameStateComponentsLookup.cs" />
+    <Compile Include="Assets\Generated\GameState\GameStateContext.cs" />
+    <Compile Include="Assets\Generated\GameState\GameStateEntity.cs" />
+    <Compile Include="Assets\Generated\GameState\GameStateMatcher.cs" />
     <Compile Include="Assets\Generated\Input\Components\InputInputComponent.cs" />
     <Compile Include="Assets\Generated\Input\InputAttribute.cs" />
     <Compile Include="Assets\Generated\Input\InputComponentsLookup.cs" />
@@ -92,6 +98,7 @@
     <Compile Include="Assets\Resources\Components\InteractiveComponent.cs" />
     <Compile Include="Assets\Resources\Components\MovableComponent.cs" />
     <Compile Include="Assets\Resources\Components\PositionComponent.cs" />
+    <Compile Include="Assets\Resources\Components\ScoreComponent.cs" />
     <Compile Include="Assets\Resources\Components\TabbedComponent.cs" />
     <Compile Include="Assets\Resources\Components\ViewComponent.cs" />
     <Compile Include="Assets\Resources\Systems\BoardGame\BoardSystems.cs" />
@@ -100,6 +107,8 @@
     <Compile Include="Assets\Resources\Systems\BoardGame\FillSystem.cs" />
     <Compile Include="Assets\Resources\Systems\DestroyBoardGameSystem.cs" />
     <Compile Include="Assets\Resources\Systems\DestroyEntitySystem.cs" />
+    <Compile Include="Assets\Resources\Systems\GameState\GameStateSystems.cs" />
+    <Compile Include="Assets\Resources\Systems\GameState\ScoreSystem.cs" />
     <Compile Include="Assets\Resources\Systems\Input\InputMouseSystem.cs" />
     <Compile Include="Assets\Resources\Systems\Input\InputSystem.cs" />
     <Compile Include="Assets\Resources\Systems\Input\ProcessInputSystem.cs" />
@@ -113,6 +122,7 @@
     <Compile Include="Assets\Scripts\CheckEmptyPosition.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\RandomBoardElements.cs" />
+    <Compile Include="Assets\Scripts\ScoreLabelController.cs" />
     <Compile Include="Assets\Scripts\Test\GenarateBrick.cs" />
     <Compile Include="Assets\Scripts\Test\GenerateBlock.cs" />
     <None Include="Assets\DOTween\DOTween50.xml" />
