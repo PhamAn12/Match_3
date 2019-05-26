@@ -27,7 +27,7 @@ public class AddViewSystem : ReactiveSystem<GameEntity>
 
     protected override void Execute(List<GameEntity> entities)
     {
-        Debug.Log("inside Execute");
+       // Debug.Log("inside Execute");
         foreach (var e in entities)
         {
             //Debug.Log(entities.Count);

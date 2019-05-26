@@ -10,8 +10,12 @@ public static class RandomBoardElements
         "Prefabs/GenerateBrick",
         "Prefabs/Piece0",
         "Prefabs/Block_2",
-        "Prefabs/Block_1"
-        
+        "Prefabs/Block_1",
+        "Prefabs/Piece1",
+        "Prefabs/Piece3",
+        "Prefabs/Piece4",
+        "Prefabs/Piece5",
+
     };
     public static GameEntity CreateGameBoard(this GameContext context)
     {
@@ -28,10 +32,27 @@ public static class RandomBoardElements
 
        // Instantiate(obj);
         entity.AddAsset(_items[Random.Range(0, _items.Length)]);
-        entity.isMovable = true;
+        //entity.isMovable = true;
         entity.isBoadGameElement = true;
         //var block_instance = Instantiate(block) as GameObject;
         
+        //block_instance.transform.position = new Vector3(3,3,0); 
+        return entity;
+    }
+
+    public static GameEntity CreateNewRandomPiece(this GameContext context, float x, float y)
+    {
+        var entity = context.CreateEntity();
+
+        entity.AddPosition(new Vector2(x * 1.5f, y * 1.5f));
+        //GameObject obj = Resources.Load("CellBlock") as GameObject;
+
+        // Instantiate(obj);
+        entity.AddAsset(_items[Random.Range(0, _items.Length)]);
+        entity.isMovable = true;
+        entity.isBoadGameElement = true;
+        //var block_instance = Instantiate(block) as GameObject;
+
         //block_instance.transform.position = new Vector3(3,3,0); 
         return entity;
     }

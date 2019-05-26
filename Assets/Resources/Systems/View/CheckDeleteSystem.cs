@@ -129,8 +129,8 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
             while (q.Count != 0)
             {
                 GameEntity gameEntity = q.Peek();
-                Debug.Log("element in q : " + q.ToArray().ToList());
-                Debug.Log("first element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
+                //Debug.Log("element in q : " + q.ToArray().ToList());
+                //Debug.Log("first element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
                 q.Dequeue();
                 
                 var blocks = _blockGroup.GetEntities();
@@ -143,7 +143,7 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
                     {
                         Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] = 1;
                         q.Enqueue(b);
-                        Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
+                        //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
                         b.isDestroyed = true;
                         b.isMovable = true;
                         flag = 1;
@@ -155,7 +155,7 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
                     {
                         Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] = 1;
                         q.Enqueue(b);
-                        Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
+                        //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
                         b.isDestroyed = true;
                         b.isMovable = true;
                         flag = 1;
@@ -167,7 +167,7 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
                     {
                         Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] = 1;
                         q.Enqueue(b);
-                        Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
+                        //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
                         b.isDestroyed = true;
                         b.isMovable = true;
                         flag = 1;
@@ -179,7 +179,7 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
                     {
                         Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] = 1;
                         q.Enqueue(b);
-                        Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
+                        //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
                         b.isDestroyed = true;
                         b.isMovable = true;
                         flag = 1;
@@ -191,7 +191,7 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
                     {
                         Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] = 1;
                         q.Enqueue(b);
-                        Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
+                        //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
                         b.isDestroyed = true;
                         flag = 1;
 
@@ -202,7 +202,7 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
                     {
                         Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] = 1;
                         q.Enqueue(b);
-                        Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
+                        //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
                         b.isDestroyed = true;
                         flag = 1;
 
@@ -213,7 +213,7 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
                     {
                         Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] = 1;
                         q.Enqueue(b);
-                        Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
+                        //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
                         b.isDestroyed = true;
                         flag = 1;
 
@@ -224,7 +224,7 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
                     {
                         Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] = 1;
                         q.Enqueue(b);
-                        Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
+                        //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
                         b.isDestroyed = true;
                         flag = 1;
 
