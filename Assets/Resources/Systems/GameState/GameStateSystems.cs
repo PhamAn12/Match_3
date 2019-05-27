@@ -1,6 +1,6 @@
 public sealed class GameStateSystems : Feature {
 
-    public GameStateSystems(GameContext Game, GameStateContext GameState) {
-        Add(new ScoreSystem(Game, GameState));
+    public GameStateSystems(GameContext Game) {
+        Add(new ScoreSystem(Game));
     }
 }

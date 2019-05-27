@@ -8,15 +8,18 @@
 //------------------------------------------------------------------------------
 public static class GameStateComponentsLookup {
 
-    public const int Score = 0;
+    public const int Point = 0;
+    public const int Score = 1;
 
-    public const int TotalComponents = 1;
+    public const int TotalComponents = 2;
 
     public static readonly string[] componentNames = {
+        "Point",
         "Score"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(PointComponent),
         typeof(ScoreComponent)
     };
 }

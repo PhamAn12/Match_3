@@ -33,90 +33,7 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
         var name = entities[0].asset.name;
         var x = entities[0].position.value.x;
         var y = entities[0].position.value.y;
-        
-//        Debug.Log("check : " + name + " " + x + " " + y);
-//        foreach (var e in entities)
-//        {
-//            var flag = 0;
-//            var blocks = _blockGroup.GetEntities();
-//            foreach (var b in blocks)
-//            {
-//                if (b.position.value.x == x + 1.5 && b.position.value.y == y)
-//                {
-//                    if (b.asset.name == name)
-//                    {
-//                        b.isDestroyed = true;
-//                        flag = 1;
-//                    }
-//                        
-//                }
-//                if (b.position.value.x == x - 1.5 && b.position.value.y == y)
-//                {
-//                    if (b.asset.name == name)
-//                    {
-//                        b.isDestroyed = true;
-//                        flag = 1;
-//                    }
-//                }
-//                if (b.position.value.x == x && b.position.value.y == y + 1.5)
-//                {
-//                    if (b.asset.name == name)
-//                    {
-//                        b.isDestroyed = true;
-//                        flag = 1;
-//                    }
-//                }
-//                if (b.position.value.x == x  && b.position.value.y == y - 1.5)
-//                {
-//                    if (b.asset.name == name)
-//                    {
-//                        b.isDestroyed = true;
-//                        flag = 1;
-//                    }
-//                }
-//                if (b.position.value.x == x - 1.5  && b.position.value.y == y - 1.5)
-//                {
-//                    if (b.asset.name == name)
-//                    {
-//                        b.isDestroyed = true;
-//                        flag = 1;
-//                    }
-//                } 
-//                if (b.position.value.x == x + 1.5  && b.position.value.y == y - 1.5)
-//                {
-//                    if (b.asset.name == name)
-//                    {
-//                        b.isDestroyed = true;
-//                        flag = 1;
-//                    }
-//                } 
-//                if (b.position.value.x == x - 1.5  && b.position.value.y == y + 1.5)
-//                {
-//                    if (b.asset.name == name)
-//                    {
-//                        b.isDestroyed = true;
-//                        flag = 1;
-//                    }
-//                } 
-//                else if (b.position.value.x == x + 1.5 && b.position.value.y == y + 1.5)
-//                {
-//                    if (b.asset.name == name)
-//                    {
-//                        b.isDestroyed = true;
-//                        flag = 1;
-//                    }
-//                } 
-//            }
-//
-//            if (flag == 1)
-//                
-//                e.isDestroyed = true;
-//            else
-//            {
-//                e.isTabbed = false;
-//            }
-//        }
-
+       
         Queue <GameEntity>q = new Queue<GameEntity>();
         int[,] Free = new int[9,9];
         for (int i = 0; i < 81; i++) Free[i % 9, i / 9] = 0;
@@ -157,7 +74,6 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
                         q.Enqueue(b);
                         //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
                         b.isDestroyed = true;
-                        b.isMovable = true;
                         flag = 1;
 
                     }
@@ -169,7 +85,6 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
                         q.Enqueue(b);
                         //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
                         b.isDestroyed = true;
-                        b.isMovable = true;
                         flag = 1;
 
                     }
@@ -181,54 +96,53 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
                         q.Enqueue(b);
                         //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
                         b.isDestroyed = true;
-                        b.isMovable = true;
                         flag = 1;
 
                     }
-                    if (b.position.value.x == gameEntity.position.value.x - 1.5 && 
-                        b.position.value.y == gameEntity.position.value.y -1.5 && b.asset.name == name &&
-                        Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] == 0)
-                    {
-                        Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] = 1;
-                        q.Enqueue(b);
-                        //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
-                        b.isDestroyed = true;
-                        flag = 1;
-
-                    }
-                    if (b.position.value.x == gameEntity.position.value.x + 1.5 && 
-                        b.position.value.y == gameEntity.position.value.y + 1.5 && b.asset.name == name &&
-                        Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] == 0)
-                    {
-                        Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] = 1;
-                        q.Enqueue(b);
-                        //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
-                        b.isDestroyed = true;
-                        flag = 1;
-
-                    }
-                    if (b.position.value.x == gameEntity.position.value.x - 1.5 && 
-                        b.position.value.y == gameEntity.position.value.y + 1.5 && b.asset.name == name &&
-                        Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] == 0)
-                    {
-                        Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] = 1;
-                        q.Enqueue(b);
-                        //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
-                        b.isDestroyed = true;
-                        flag = 1;
-
-                    }
-                    if (b.position.value.x == gameEntity.position.value.x + 1.5 && 
-                        b.position.value.y == gameEntity.position.value.y - 1.5 && b.asset.name == name &&
-                        Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] == 0)
-                    {
-                        Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] = 1;
-                        q.Enqueue(b);
-                        //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
-                        b.isDestroyed = true;
-                        flag = 1;
-
-                    }
+//                    if (b.position.value.x == gameEntity.position.value.x - 1.5 && 
+//                        b.position.value.y == gameEntity.position.value.y -1.5 && b.asset.name == name &&
+//                        Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] == 0)
+//                    {
+//                        Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] = 1;
+//                        q.Enqueue(b);
+//                        //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
+//                        b.isDestroyed = true;
+//                        flag = 1;
+//
+//                    }
+//                    if (b.position.value.x == gameEntity.position.value.x + 1.5 && 
+//                        b.position.value.y == gameEntity.position.value.y + 1.5 && b.asset.name == name &&
+//                        Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] == 0)
+//                    {
+//                        Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] = 1;
+//                        q.Enqueue(b);
+//                        //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
+//                        b.isDestroyed = true;
+//                        flag = 1;
+//
+//                    }
+//                    if (b.position.value.x == gameEntity.position.value.x - 1.5 && 
+//                        b.position.value.y == gameEntity.position.value.y + 1.5 && b.asset.name == name &&
+//                        Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] == 0)
+//                    {
+//                        Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] = 1;
+//                        q.Enqueue(b);
+//                        //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
+//                        b.isDestroyed = true;
+//                        flag = 1;
+//
+//                    }
+//                    if (b.position.value.x == gameEntity.position.value.x + 1.5 && 
+//                        b.position.value.y == gameEntity.position.value.y - 1.5 && b.asset.name == name &&
+//                        Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] == 0)
+//                    {
+//                        Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] = 1;
+//                        q.Enqueue(b);
+//                        //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
+//                        b.isDestroyed = true;
+//                        flag = 1;
+//
+//                    }
                                         
                 }
                 
