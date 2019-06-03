@@ -5,14 +5,14 @@ using UnityEngine;
 
 public sealed class AnimatePositionSystem : ReactiveSystem<GameEntity>
 {
-    private readonly float SPEED = 1.0f;
+    private readonly float SPEED = 1.2f;
     readonly GameContext _context;
     IGroup<GameEntity> _movebleBlock;
 
     public AnimatePositionSystem(GameContext Game) : base(Game)
     {
         _context = Game;
-        _movebleBlock = _context.GetGroup(GameMatcher.AllOf(GameMatcher.Movable));
+        _movebleBlock = _context.GetGroup(GameMatcher.AllOf(GameMatcher.Movable,GameMatcher.Downable));
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -47,13 +47,19 @@ public sealed class AnimatePositionSystem : ReactiveSystem<GameEntity>
             var tempr = r;
             foreach (var m in movebleBlockList)
             {
-                if (m.view.gameObject.transform.position.x == tempr)
+                if (m.view.gameObject.transform.position.x == tempr && m.asset.name != "Prefabs/GenerateBrick")
                 {
                     count++;
                 }
-            }
+            }    
 
-            //Debug.Log("COUNT : " + count + " r : " + r);
+//            Debug.Log("COUNT : " + count + " r : " + r);
+            if (count == 0)
+                foreach (var e in entities)
+                {
+                    var pos = e.position;
+                    e.view.gameObject.transform.DOMove(new Vector3(pos.value.x, pos.value.y, 0f), SPEED);
+                }
             if (count == 1)
             {
                 foreach (var e in entities)

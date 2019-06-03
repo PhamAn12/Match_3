@@ -33,9 +33,9 @@ public class ScoreSystem : ReactiveSystem<GameEntity>,IInitializeSystem
         
         var ban = entities.Count;
         
-        Debug.Log("NMDMDddddddererererer : " + ban);
+        
         count += ban;
-        Debug.Log(count);
+        //Debug.Log(count);
         updateScore(count);
     }
     void updateScore(int score)

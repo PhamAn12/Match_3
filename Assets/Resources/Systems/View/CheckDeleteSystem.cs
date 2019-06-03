@@ -9,7 +9,7 @@ using UnityEngine;
 public class CheckDeleteSystem : ReactiveSystem<GameEntity>
 {
     private readonly GameContext _context;
-
+    private readonly string ASSET_NAME_BRICK = "Prefabs/GenerateBrick";
     private IGroup<GameEntity> _blockGroup;
     public CheckDeleteSystem(GameContext Game) : base(Game)
     {
@@ -41,8 +41,9 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
         
         q.Enqueue(entities[0]);
         Free[(int) (x/1.5f), (int) (y/1.5f)] = 1;
-        //q.Dequeue();
         var flag = 0;
+        if (name != ASSET_NAME_BRICK)
+        {
             while (q.Count != 0)
             {
                 GameEntity gameEntity = q.Peek();
@@ -99,58 +100,17 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
                         flag = 1;
 
                     }
-//                    if (b.position.value.x == gameEntity.position.value.x - 1.5 && 
-//                        b.position.value.y == gameEntity.position.value.y -1.5 && b.asset.name == name &&
-//                        Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] == 0)
-//                    {
-//                        Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] = 1;
-//                        q.Enqueue(b);
-//                        //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
-//                        b.isDestroyed = true;
-//                        flag = 1;
-//
-//                    }
-//                    if (b.position.value.x == gameEntity.position.value.x + 1.5 && 
-//                        b.position.value.y == gameEntity.position.value.y + 1.5 && b.asset.name == name &&
-//                        Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] == 0)
-//                    {
-//                        Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] = 1;
-//                        q.Enqueue(b);
-//                        //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
-//                        b.isDestroyed = true;
-//                        flag = 1;
-//
-//                    }
-//                    if (b.position.value.x == gameEntity.position.value.x - 1.5 && 
-//                        b.position.value.y == gameEntity.position.value.y + 1.5 && b.asset.name == name &&
-//                        Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] == 0)
-//                    {
-//                        Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] = 1;
-//                        q.Enqueue(b);
-//                        //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
-//                        b.isDestroyed = true;
-//                        flag = 1;
-//
-//                    }
-//                    if (b.position.value.x == gameEntity.position.value.x + 1.5 && 
-//                        b.position.value.y == gameEntity.position.value.y - 1.5 && b.asset.name == name &&
-//                        Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] == 0)
-//                    {
-//                        Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] = 1;
-//                        q.Enqueue(b);
-//                        //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
-//                        b.isDestroyed = true;
-//                        flag = 1;
-//
-//                    }
                                         
                 }
                 
                 
             }
+        }    
 
-            if (flag == 1) entities[0].isDestroyed = true;
-            else entities[0].isTabbed = false;
+        if (flag == 1) 
+            entities[0].isDestroyed = true;
+        else 
+            entities[0].isTabbed = false;
 
     }
 

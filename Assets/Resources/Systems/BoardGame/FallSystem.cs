@@ -40,6 +40,7 @@ public class FallSystem : ReactiveSystem<GameEntity>
 
                 //Debug.Log(position.x + " and " + position.y);
                 var movables = _context.GetEntitiesWithPosition(position)
+                    .Where(e => e.isDownable)
                     .ToArray();
                 
                 foreach (var e in movables) {
@@ -54,10 +55,10 @@ public class FallSystem : ReactiveSystem<GameEntity>
     void MoveDown(GameEntity entity, Vector2 position)
     {
         var nextRowPos = CheckEmptyPosition.GetNextEmptyRow(_context, position);
-        //Debug.Log("NRP " + nextRowPos + " Y " + position.y);
+        Debug.Log("NRP " + nextRowPos + " Y " + position.y);
         if (nextRowPos != position.y)
         {
-            //Debug.Log("new Pos " + nextRowPos + " Y " + position.y + " x " + position.x);
+            Debug.Log("new Pos " + nextRowPos + " Y " + position.y + " x " + position.x);
             entity.ReplacePosition(new Vector2(position.x, nextRowPos));
         }
     }
