@@ -14,15 +14,17 @@ public static class GameComponentsLookup {
     public const int BurstMode = 3;
     public const int Destroyed = 4;
     public const int Downable = 5;
-    public const int Input = 6;
-    public const int Interactive = 7;
-    public const int Movable = 8;
-    public const int Position = 9;
-    public const int Score = 10;
-    public const int Tabbed = 11;
-    public const int View = 12;
+    public const int Heart = 6;
+    public const int Input = 7;
+    public const int Interactive = 8;
+    public const int Movable = 9;
+    public const int MoveNum = 10;
+    public const int Position = 11;
+    public const int Score = 12;
+    public const int Tabbed = 13;
+    public const int View = 14;
 
-    public const int TotalComponents = 13;
+    public const int TotalComponents = 15;
 
     public static readonly string[] componentNames = {
         "Asset",
@@ -31,9 +33,11 @@ public static class GameComponentsLookup {
         "BurstMode",
         "Destroyed",
         "Downable",
+        "Heart",
         "Input",
         "Interactive",
         "Movable",
+        "MoveNum",
         "Position",
         "Score",
         "Tabbed",
@@ -47,9 +51,11 @@ public static class GameComponentsLookup {
         typeof(BurstModeComponent),
         typeof(DestroyedComponent),
         typeof(DownableComponent),
+        typeof(HeartComponent),
         typeof(InputComponent),
         typeof(InteractiveComponent),
         typeof(MovableComponent),
+        typeof(MoveNumComponent),
         typeof(PositionComponent),
         typeof(ScoreComponent),
         typeof(TabbedComponent),

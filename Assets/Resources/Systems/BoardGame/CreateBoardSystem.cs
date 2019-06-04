@@ -24,7 +24,9 @@ public class CreateBoardSystem : ReactiveSystem<GameEntity>, IInitializeSystem
 
     public void Initialize()
     {
-        
+        _context.CreateHeart(15, 12);
+        _context.CreateHeart(12, 12);
+        _context.CreateHeart(13.5f, 12);
         var gameBoard = _context.CreateGameBoard().boadGame;
       
         for (var r = 0; r < gameBoard.row; r++)
@@ -32,9 +34,9 @@ public class CreateBoardSystem : ReactiveSystem<GameEntity>, IInitializeSystem
             for (var c = 0; c < gameBoard.columns; c++)
             {
                 if (Random.value > 0.8f)
-                    _context.CreateRandomBlock(r, c);
+                    _context.CreateRandomBlock(c, r);
                 else
-                    _context.CreateRandomPiece(r, c);
+                    _context.CreateRandomPiece(c, r);
             }
 
             

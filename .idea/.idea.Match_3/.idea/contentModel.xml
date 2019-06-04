@@ -36,9 +36,11 @@
               <e p="GameBurstModeComponent.cs" t="Include" />
               <e p="GameDestroyedComponent.cs" t="Include" />
               <e p="GameDownableComponent.cs" t="Include" />
+              <e p="GameHeartComponent.cs" t="Include" />
               <e p="GameInputComponent.cs" t="Include" />
               <e p="GameInteractiveComponent.cs" t="Include" />
               <e p="GameMovableComponent.cs" t="Include" />
+              <e p="GameMoveNumComponent.cs" t="Include" />
               <e p="GamePositionComponent.cs" t="Include" />
               <e p="GameScoreComponent.cs" t="Include" />
               <e p="GameTabbedComponent.cs" t="Include" />
@@ -80,9 +82,11 @@
             <e p="BurstModeComponent.cs" t="Include" />
             <e p="DestroyedComponent.cs" t="Include" />
             <e p="DownableComponent.cs" t="Include" />
+            <e p="HeartComponent.cs" t="Include" />
             <e p="InputComponent.cs" t="Include" />
             <e p="InteractiveComponent.cs" t="Include" />
             <e p="MovableComponent.cs" t="Include" />
+            <e p="MoveNumComponent.cs" t="Include" />
             <e p="PointComponent.cs" t="Include" />
             <e p="PositionComponent.cs" t="Include" />
             <e p="ScoreComponent.cs" t="Include" />
@@ -95,6 +99,7 @@
               <e p="CreateBoardSystem.cs" t="Include" />
               <e p="FallSystem.cs" t="Include" />
               <e p="FillSystem.cs" t="Include" />
+              <e p="MoveSystem.cs" t="Include" />
               <e p="ScoreSystem.cs" t="Include" />
             </e>
             <e p="DestroyBoardGameSystem.cs" t="Include" />
@@ -111,6 +116,7 @@
               <e p="AddViewSystem.cs" t="Include" />
               <e p="AnimatePositionSystem.cs" t="Include" />
               <e p="CheckDeleteSystem.cs" t="Include" />
+              <e p="CheckDieSystem.cs" t="Include" />
               <e p="RemoveViewSystem.cs" t="Include" />
               <e p="RenderSpriteSystems.cs" t="Include" />
               <e p="SetViewPositionSystem.cs" t="Include" />

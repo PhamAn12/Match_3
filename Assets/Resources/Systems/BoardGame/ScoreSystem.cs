@@ -15,6 +15,7 @@ public class ScoreSystem : ReactiveSystem<GameEntity>,IInitializeSystem
 
     public void Initialize()
     {
+        
         updateScore(0);
     }
 
@@ -40,9 +41,12 @@ public class ScoreSystem : ReactiveSystem<GameEntity>,IInitializeSystem
     }
     void updateScore(int score)
     {
+        var scoreEntity = _context.CreateEntity();
+        scoreEntity.ReplaceScore(score);
+        Debug.Log("score value : " + scoreEntity.score.value);
         _label = GameObject.Find("Canvas/Text").GetComponent<Text>();
-        _label.transform.position = new Vector3(95,155);
-        _label.text = "Score " + score; 
+        
+        _label.text = "Score : " + score; 
         
     }
 

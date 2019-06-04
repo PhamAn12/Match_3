@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Entitas;
+using Entitas.Unity;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -26,8 +27,13 @@ public static class RandomBoardElements
         string cols = PlayerPrefs.GetString("SizeCols");
         
         var entity = context.CreateEntity();
-        //entity.AddBoadGame(Convert.ToInt32(cols), Convert.ToInt32(rows));
-        entity.AddBoadGame(4,7);
+        if (Convert.ToInt32(rows) == 0 || Convert.ToInt32(cols) == 0)
+        {
+            rows = "8";
+            cols = "8";
+        }
+        entity.AddBoadGame(Convert.ToInt32(cols), Convert.ToInt32(rows));
+        
         return entity;
     }
     
@@ -53,5 +59,13 @@ public static class RandomBoardElements
         return entity;
     }
 
+    public static GameEntity CreateHeart(this GameContext context, float x, float y)
+    {
+        var entity = context.CreateEntity();
+        entity.AddPosition(new Vector2(x,y));
+        entity.AddAsset("Prefabs/Heart");
+        entity.isHeart = true;
+        return entity;
+    }
     
 }
