@@ -42,7 +42,7 @@ public class MoveSystem : ReactiveSystem<GameEntity>,IInitializeSystem
         var moveEntiy = _context.CreateEntity();
         moveEntiy.ReplaceMoveNum(move);
         Debug.Log(moveEntiy.moveNum.value);
-        _labelMove = GameObject.Find("Canvas/NumOfMove").GetComponent<Text>();
+        _labelMove = GameObject.Find("Canvas/Panel/NumOfMove").GetComponent<Text>();
         _labelMove.text = "Move : " + move;
 
 //        if (move == 8)

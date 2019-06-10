@@ -44,7 +44,7 @@ public class ScoreSystem : ReactiveSystem<GameEntity>,IInitializeSystem
         var scoreEntity = _context.CreateEntity();
         scoreEntity.ReplaceScore(score);
         Debug.Log("score value : " + scoreEntity.score.value);
-        _label = GameObject.Find("Canvas/Text").GetComponent<Text>();
+        _label = GameObject.Find("Canvas/Panel/Text").GetComponent<Text>();
         
         _label.text = "Score : " + score; 
         

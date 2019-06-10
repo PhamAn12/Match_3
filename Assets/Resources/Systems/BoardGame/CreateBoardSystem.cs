@@ -24,16 +24,17 @@ public class CreateBoardSystem : ReactiveSystem<GameEntity>, IInitializeSystem
 
     public void Initialize()
     {
+        //GameObject.Find("Main Camera").transform.localPosition = new Vector3(0.65f,1.55f,0);
         _context.CreateHeart(15, 12);
         _context.CreateHeart(12, 12);
         _context.CreateHeart(13.5f, 12);
         var gameBoard = _context.CreateGameBoard().boadGame;
-      
+        
         for (var r = 0; r < gameBoard.row; r++)
         {
             for (var c = 0; c < gameBoard.columns; c++)
             {
-                if (Random.value > 0.8f)
+                if (Random.value > 0.6f)
                     _context.CreateRandomBlock(c, r);
                 else
                     _context.CreateRandomPiece(c, r);
