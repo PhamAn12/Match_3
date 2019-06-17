@@ -42,7 +42,8 @@ public class RemoveViewSystem : ReactiveSystem<GameEntity> {
         gameObject.transform
             .DOScale(Vector3.one * 1.5f, 1.5f)
             .OnComplete(() => {
-                gameObject.Unlink();
+                if(gameObject!= null)
+                    gameObject.Unlink();
                 Object.Destroy(gameObject);
             });
     }

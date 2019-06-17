@@ -34,7 +34,7 @@ public class CreateBoardSystem : ReactiveSystem<GameEntity>, IInitializeSystem
         {
             for (var c = 0; c < gameBoard.columns; c++)
             {
-                if (Random.value > 0.6f)
+                if (Random.value > 0.81f)
                     _context.CreateRandomBlock(c, r);
                 else
                     _context.CreateRandomPiece(c, r);

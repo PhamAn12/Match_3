@@ -20,7 +20,6 @@ public class GameController : MonoBehaviour
     }
     private void Start()
     {
-        
         var contexts = Contexts.sharedInstance;
 
         
