@@ -3,16 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using Entitas;
 using Entitas.Unity;
+using Entitas.VisualDebugging.Unity;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
-public class AddViewSystem : ReactiveSystem<GameEntity>
+public class AddViewSystem : ReactiveSystem<GameEntity>, ITearDownSystem
 {
     
     readonly Transform _viewContainer = new GameObject("Views").transform;
     readonly GameContext _context;
-
+    private Systems _systems;
+    IGroup<GameEntity> _viewGroup;
     public AddViewSystem(GameContext Game) : base(Game) {
         _context = Game;
+        _viewGroup = _context.GetGroup(GameMatcher.View);
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context) {
@@ -55,5 +59,32 @@ public class AddViewSystem : ReactiveSystem<GameEntity>
                 gameObject.Link(e);
             }
         }
+        foreach(var view in _viewGroup.GetEntities())
+        {
+            Debug.Log("view in group : " + view.view.gameObject.GetEntityLink());
+        }
     }
+
+    public void TearDown()
+    {
+        Debug.Log("Length of viewGroup arr : " + _viewGroup.GetEntities().Length);
+        foreach (var viewElement in _viewGroup.GetEntities())
+        {
+            Debug.Log("LENGTHTHTHTHTHTHTHTHTHTHTHT :" + viewElement);
+            Debug.Log("run in teardown : " + viewElement.view.gameObject.GetEntityLink());
+        }
+        foreach (var viewElement in _viewGroup.GetEntities())
+        {
+            Debug.Log("check condition if : " + viewElement.view.gameObject);
+            if (viewElement.view.gameObject != null)
+            {
+                viewElement.view.gameObject.Unlink();
+                Object.Destroy(viewElement.view.gameObject);
+                Debug.Log("IN TEARDOWN :" + viewElement);
+
+            } 
+        }
+        
+    }
+    
 }

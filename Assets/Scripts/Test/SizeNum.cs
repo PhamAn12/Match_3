@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEditor;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +16,7 @@ public class SizeNum : MonoBehaviour
 
         if(Convert.ToInt32(rows) < 3)
         {
-            EditorUtility.DisplayDialog("row invalid","row must be > 3","OK");
+//            EditorUtility.DisplayDialog("row invalid","row must be > 3","OK");
             Debug.Log("kd");
             _okButton = GameObject.Find("Canvas/OptionMenu/OkButton").GetComponent<Button>();
             _inputCols = GameObject.Find("Canvas/OptionMenu/InputRow").GetComponent<InputField>();
@@ -41,7 +40,7 @@ public class SizeNum : MonoBehaviour
         
         if(Convert.ToInt32(cols) < 3 || cols == null)
         {
-            EditorUtility.DisplayDialog("col invalid","col must be > 3","OK");
+//            EditorUtility.DisplayDialog("col invalid","col must be > 3","OK");
             Debug.Log("kd");
             _okButton = GameObject.Find("Canvas/OptionMenu/OkButton").GetComponent<Button>();
             _inputRows = GameObject.Find("Canvas/OptionMenu/InputCol").GetComponent<InputField>();

@@ -25,15 +25,9 @@ public class FallSystem : ReactiveSystem<GameEntity>
 
     protected override void Execute(List<GameEntity> entities)
     {
-//        foreach (var e in entities)
-//        {
-//            Debug.Log("removed : " + e);
-//        }
-        
-        
         var gameBoard = _context.CreateGameBoard().boadGame;
         
-        Debug.Log(gameBoard.columns + "va" + gameBoard.row);
+        //Debug.Log(gameBoard.columns + "va" + gameBoard.row);
         for (var c = 0*1.5f; c < gameBoard.columns*1.5f; c += 1.5f) {
             for (var r = 0*1.5f; r < gameBoard.row*1.5f; r += 1.5f) {
                 var position = new Vector2(c, r);
@@ -44,21 +38,20 @@ public class FallSystem : ReactiveSystem<GameEntity>
                     .ToArray();
                 
                 foreach (var e in movables) {
-//                    Debug.Log("new Pos" + e);
-
+                    //Debug.Log("new Pos" + e);
                     MoveDown(e, position);
                 }
             }
         }
     }
-
+    
     void MoveDown(GameEntity entity, Vector2 position)
     {
         var nextRowPos = CheckEmptyPosition.GetNextEmptyRow(_context, position);
-//        Debug.Log("NRP " + nextRowPos + " Y " + position.y);
+        //Debug.Log("NRP " + nextRowPos + " Y " + position.y);
         if (nextRowPos != position.y)
         {
-//            Debug.Log("new Pos " + nextRowPos + " Y " + position.y + " x " + position.x);
+        //Debug.Log("new Pos " + nextRowPos + " Y " + position.y + " x " + position.x);
             entity.ReplacePosition(new Vector2(position.x, nextRowPos));
         }
     }

@@ -4,13 +4,15 @@ using Entitas;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScoreSystem : ReactiveSystem<GameEntity>,IInitializeSystem
+public class ScoreSystem : ReactiveSystem<GameEntity>,IInitializeSystem,ICleanupSystem
 {
     readonly GameContext _context;
     int count = 0;
     private Text _label;
+    IGroup<GameEntity> _scoreGroup;
     public ScoreSystem(GameContext Game) : base(Game) {
         _context = Game;
+        _scoreGroup = _context.GetGroup(GameMatcher.Score);
     }
 
     public void Initialize()
@@ -50,5 +52,11 @@ public class ScoreSystem : ReactiveSystem<GameEntity>,IInitializeSystem
         
     }
 
-    
+    public void Cleanup()
+    {
+        foreach(var e in _scoreGroup.GetEntities())
+        {
+            e.Destroy();
+        }
+    }
 }
