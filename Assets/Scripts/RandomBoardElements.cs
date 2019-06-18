@@ -43,12 +43,12 @@ public static class RandomBoardElements
         var entity = context.CreateEntity();
         
         entity.AddPosition(new Vector2(x  * 1.5f, y * 1.5f));
-        //if (entity.position.value.x == 0 && entity.position.value.y == 0 || 
-        //    entity.position.value.x == 0 && entity.position.value.y == 1.5f)
-        //{
-        //    entity.AddAsset("Prefabs/Piece0");
-        //}
-        //else 
+        if (entity.position.value.x == 0 && entity.position.value.y == 0 ||
+            entity.position.value.x == 0 && entity.position.value.y == 1.5f)
+        {
+            entity.AddAsset("Prefabs/Piece0");
+        }
+        else
             entity.AddAsset(_items[Random.Range(0, _items.Length)]);
         //entity.isMovable = true;
         entity.isBoadGameElement = true;
@@ -60,15 +60,15 @@ public static class RandomBoardElements
     {
         var entity = context.CreateEntity();
         entity.AddPosition(new Vector2(x  * 1.5f, y * 1.5f));
-        //if (entity.position.value.x == 0 && entity.position.value.y == 0 || 
-        //    entity.position.value.x == 0 && entity.position.value.y == 1.5f)
-        //{
-        //    entity.AddAsset("Prefabs/Piece0");
-        //}
-        //else
-        //{
+        if (entity.position.value.x == 0 && entity.position.value.y == 0 ||
+            entity.position.value.x == 0 && entity.position.value.y == 1.5f)
+        {
+            entity.AddAsset("Prefabs/Piece0");
+        }
+        else
+        {
             entity.AddAsset("Prefabs/GenerateBrick");
-        //}
+        }
         entity.isBoadGameElement = true;
         //entity.isMovable = true;
         return entity;

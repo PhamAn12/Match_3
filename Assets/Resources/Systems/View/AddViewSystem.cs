@@ -5,14 +5,15 @@ using Entitas;
 using Entitas.Unity;
 using UnityEngine;
 
-public class AddViewSystem : ReactiveSystem<GameEntity>
+public class AddViewSystem : ReactiveSystem<GameEntity>, ITearDownSystem
 {
     
     readonly Transform _viewContainer = new GameObject("Views").transform;
     readonly GameContext _context;
-
+    IGroup<GameEntity> _viewGroup;
     public AddViewSystem(GameContext Game) : base(Game) {
         _context = Game;
+        _viewGroup = _context.GetGroup(GameMatcher.View);
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context) {
@@ -54,6 +55,16 @@ public class AddViewSystem : ReactiveSystem<GameEntity>
                 e.AddView(gameObject);
                 gameObject.Link(e);
             }
+        }
+    }
+
+    public void TearDown()
+    {
+        GameEntity[] viewElements = _viewGroup.GetEntities();
+        for (int i = 0; i < viewElements.Length; i++)
+        {
+            GameEntity entity = viewElements[i];
+            entity.isDestroyed = true; // This extension method first calls Unlink and then Destroy
         }
     }
 }

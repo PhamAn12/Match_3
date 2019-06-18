@@ -60,18 +60,20 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
         }
         else
             Debug.Log("CHUa chet");
-        if(CheckColorBlock(blockSuffle) == false && CheckDied(entities) == false)
+        if(CheckColorBlock(blockSuffle) == false)
         {
             if(CheckDied(entities) == false)
             {
                 Debug.Log("DIE");
-                if (blocksHeart.Length > 0)
-                    blocksHeart[0].isDestroyed = true;
+                //if (blocksHeart.Length > 0)
+                //    blocksHeart[0].isDestroyed = true;
                 foreach (var b in blockSuffle)
                 {
                     //Debug.Log("BBBB :" + b);
                 }
-                Debug.Log("Length Block Suffle: " + blockSuffle.Length);
+
+                // Suffle all blocks if can't move
+
                 for (int t = 0; t < blockSuffle.Length; t++)
                 {
                     var temp = blockSuffle[t].position.value;
@@ -81,28 +83,29 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
 
                     } while (randomList.Contains(rnd));
                     randomList.Add(rnd);
-                    //Debug.Log(t + "_" + rnd + "_" + blockSuffle[rnd]);
-                    //Debug.Log("temp " + temp);
+
                     blockSuffle[t].ReplacePosition(new Vector2(blockSuffle[rnd].position.value.x,
                         blockSuffle[rnd].position.value.y));
                     blockSuffle[rnd].ReplacePosition(new Vector2(temp.x, temp.y));
-                    //var temp = blockSuffle[0].position.value;
 
-                    //blockSuffle[0].ReplacePosition(new Vector2(blockSuffle[1].position.value.x,
-                    //    blockSuffle[1].position.value.y));
-
-                    //blockSuffle[1].ReplacePosition(new Vector2(temp.x, temp.y));
 
                 }
+
                 foreach (var b in blockSuffle)
                 {
                     //Debug.Log("AAAA :" + b);
                 }
+                //Convert2Block(blockSuffle);
+
+
             }
             if (CheckDied(entities))
+            {
                 Debug.Log("CHUA DIE");
+
+            }
         }
-        else if(CheckColorBlock(blockSuffle) == true)
+        if(CheckColorBlock(blockSuffle) == true)
         {
             Debug.Log("THUA CUOC");
         }
@@ -161,8 +164,8 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
                             if (!b.asset.name.Equals(ASSET_NAME_BRICK) && i.asset.name.Equals(b.asset.name) && ((b.position.value.x == i.position.value.x && b.position.value.y
                                 == i.position.value.y + 1.5) || (b.position.value.x == i.position.value.x && b.position.value.y
                                 == i.position.value.y - 1.5) || (b.position.value.x == i.position.value.x + 1.5 && b.position.value.y
-                                == i.position.value.y) || (b.position.value.x == i.position.value.x && b.position.value.y
-                                == i.position.value.y - 1.5)))
+                                == i.position.value.y) || (b.position.value.x == i.position.value.x - 1.5 && b.position.value.y
+                                == i.position.value.y)))
                             {
                                 Debug.Log("i11" + i.position.value.x + "  " + i.position.value.y);
                                 Debug.Log("ChuaDie11");
@@ -196,8 +199,8 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
                             if (!b.asset.name.Equals(ASSET_NAME_BRICK) && i.asset.name.Equals(b.asset.name) && ((b.position.value.x == i.position.value.x && b.position.value.y
                                 == i.position.value.y + 1.5) || (b.position.value.x == i.position.value.x && b.position.value.y
                                 == i.position.value.y - 1.5) || (b.position.value.x == i.position.value.x + 1.5 && b.position.value.y
-                                == i.position.value.y) || (b.position.value.x == i.position.value.x && b.position.value.y
-                                == i.position.value.y - 1.5)))
+                                == i.position.value.y) || (b.position.value.x == i.position.value.x - 1.5 && b.position.value.y
+                                == i.position.value.y)))
                             {
                                 Debug.Log("i22" + i.position.value.x + "  " + i.position.value.y);
                                 Debug.Log("ChuaDie22");
@@ -231,8 +234,8 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
                             if (!b.asset.name.Equals(ASSET_NAME_BRICK) && i.asset.name.Equals(b.asset.name) && ((b.position.value.x == i.position.value.x && b.position.value.y
                                 == i.position.value.y + 1.5) || (b.position.value.x == i.position.value.x && b.position.value.y
                                 == i.position.value.y - 1.5) || (b.position.value.x == i.position.value.x + 1.5 && b.position.value.y
-                                == i.position.value.y) || (b.position.value.x == i.position.value.x && b.position.value.y
-                                == i.position.value.y - 1.5)))
+                                == i.position.value.y) || (b.position.value.x == i.position.value.x - 1.5 && b.position.value.y
+                                == i.position.value.y)))
                             {
                                 Debug.Log("i33" + i.position.value.x + "  " + i.position.value.y);
                                 Debug.Log("ChuaDie33");
@@ -266,8 +269,8 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
                             if (!b.asset.name.Equals(ASSET_NAME_BRICK) && i.asset.name.Equals(b.asset.name) && ((b.position.value.x == i.position.value.x && b.position.value.y
                                 == i.position.value.y + 1.5) || (b.position.value.x == i.position.value.x && b.position.value.y
                                 == i.position.value.y - 1.5) || (b.position.value.x == i.position.value.x + 1.5 && b.position.value.y
-                                == i.position.value.y) || (b.position.value.x == i.position.value.x && b.position.value.y
-                                == i.position.value.y - 1.5)))
+                                == i.position.value.y) || (b.position.value.x == i.position.value.x - 1.5 && b.position.value.y
+                                == i.position.value.y)))
                             {
                                 Debug.Log("i44" + i.position.value.x + "  " + i.position.value.y);
                                 Debug.Log("ChuaDie44");
@@ -298,7 +301,117 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
 
         return false;
     }
+    void Convert2Block(GameEntity[] blockSuffle)
+    {
+        List<GameEntity> s1 = new List<GameEntity>();
+        List<GameEntity> s2 = new List<GameEntity>();
+        List<GameEntity> s3 = new List<GameEntity>();
+        List<GameEntity> s4 = new List<GameEntity>();
+        List<GameEntity> s5 = new List<GameEntity>();
+        foreach (var block in blockSuffle)
+        {
+            if (block.asset.name.Equals("Prefabs/Block_1")) s1.Add(block);
+            if (block.asset.name.Equals("Prefabs/Block_2")) s2.Add(block);
+            if (block.asset.name.Equals("Prefabs/Piece0")) s3.Add(block);
+            if (block.asset.name.Equals("Prefabs/Piece3")) s4.Add(block);
+            if (block.asset.name.Equals("Prefabs/Piece4")) s5.Add(block);
+        }
+        if (s1.Count > 1)
+        {
+            GameEntity blockSuffleTrick = null;
+            var posSuffle1 = s1[0].position.value;
+            var x = posSuffle1.x;
+            var y = posSuffle1.y + 1.5f;
+            foreach(var block in blockSuffle)
+            {
+                if(block.position.value.x == x && block.position.value.y == y)
+                {
+                    blockSuffleTrick = block;
+                }
+            }
+            float tempx = blockSuffleTrick.position.value.x;
+            float tempy = blockSuffleTrick.position.value.y;
+            blockSuffleTrick.ReplacePosition(new Vector2(x,y));
+            s1[1].ReplacePosition(new Vector2(tempx, tempy));
+                
+        }
+        else if (s2.Count > 1)
+        {
+            GameEntity blockSuffleTrick = null;
+            var posSuffle1 = s2[0].position.value;
+            var x = posSuffle1.x;
+            var y = posSuffle1.y + 1.5f;
+            foreach (var block in blockSuffle)
+            {
+                if (block.position.value.x == x && block.position.value.y == y)
+                {
+                    blockSuffleTrick = block;
+                }
+            }
+            float tempx = blockSuffleTrick.position.value.x;
+            float tempy = blockSuffleTrick.position.value.y;
+            blockSuffleTrick.ReplacePosition(new Vector2(x, y));
+            s2[1].ReplacePosition(new Vector2(tempx, tempy));
 
+        }
+        else if (s3.Count > 1)
+        {
+            GameEntity blockSuffleTrick = null;
+            var posSuffle1 = s3[0].position.value;
+            var x = posSuffle1.x;
+            var y = posSuffle1.y + 1.5f;
+            foreach (var block in blockSuffle)
+            {
+                if (block.position.value.x == x && block.position.value.y == y)
+                {
+                    blockSuffleTrick = block;
+                }
+            }
+            float tempx = blockSuffleTrick.position.value.x;
+            float tempy = blockSuffleTrick.position.value.y;
+            blockSuffleTrick.ReplacePosition(new Vector2(x, y));
+            s3[1].ReplacePosition(new Vector2(tempx, tempy));
+
+        }
+        else if (s4.Count > 1)
+        {
+            GameEntity blockSuffleTrick = null;
+            var posSuffle1 = s4[0].position.value;
+            var x = posSuffle1.x;
+            var y = posSuffle1.y + 1.5f;
+            foreach (var block in blockSuffle)
+            {
+                if (block.position.value.x == x && block.position.value.y == y)
+                {
+                    blockSuffleTrick = block;
+                }
+            }
+            float tempx = blockSuffleTrick.position.value.x;
+            float tempy = blockSuffleTrick.position.value.y;
+            blockSuffleTrick.ReplacePosition(new Vector2(x, y));
+            s4[1].ReplacePosition(new Vector2(tempx, tempy));
+
+        }
+        else if (s5.Count > 1)
+        {
+            GameEntity blockSuffleTrick = null;
+            var posSuffle1 = s5[0].position.value;
+            var x = posSuffle1.x;
+            var y = posSuffle1.y + 1.5f;
+            foreach (var block in blockSuffle)
+            {
+                if (block.position.value.x == x && block.position.value.y == y)
+                {
+                    blockSuffleTrick = block;
+                }
+            }
+            float tempx = blockSuffleTrick.position.value.x;
+            float tempy = blockSuffleTrick.position.value.y;
+            blockSuffleTrick.ReplacePosition(new Vector2(x, y));
+            s5[1].ReplacePosition(new Vector2(tempx, tempy));
+
+        }
+    }
     bool CheckColorBlock(GameEntity[] blockSuffle)
     {
         List<GameEntity> s1 = new List<GameEntity>();

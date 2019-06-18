@@ -36,4 +36,10 @@ public class GameController : MonoBehaviour
     {
         _systems.Execute(); 
     }
+    private void OnDestroy()
+    {
+        _systems.TearDown();
+        Contexts.sharedInstance.game.Reset();
+        Contexts.sharedInstance.input.Reset();
+    }
 }
