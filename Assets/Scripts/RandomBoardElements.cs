@@ -28,9 +28,15 @@ public static class RandomBoardElements
     
     public static GameEntity CreateGameBoard(this GameContext context)
     {
+        
         string rows = PlayerPrefs.GetString("SizeRows");
         string cols = PlayerPrefs.GetString("SizeCols");
 //        Debug.Log("r and c " + rows + " " + cols);
+        if (rows == null || rows == "" && cols == null || cols == "")
+        {
+            rows = "8";
+            cols = "8";
+        }
         var entity = context.CreateEntity();
         
         entity.AddBoadGame(Int32.Parse(cols), Int32.Parse(rows));

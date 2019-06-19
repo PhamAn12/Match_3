@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Entitas;
 using Entitas.Unity;
+using Entitas.VisualDebugging.Unity;
 using UnityEngine;
 
 public class AddViewSystem : ReactiveSystem<GameEntity>, ITearDownSystem
@@ -64,7 +65,7 @@ public class AddViewSystem : ReactiveSystem<GameEntity>, ITearDownSystem
         for (int i = 0; i < viewElements.Length; i++)
         {
             GameEntity entity = viewElements[i];
-            entity.isDestroyed = true; // This extension method first calls Unlink and then Destroy
+            entity.view.gameObject.DestroyGameObject(); // This extension method first calls Unlink and then Destroy
         }
     }
 }

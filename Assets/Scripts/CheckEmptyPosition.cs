@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace DefaultNamespace
 {
+    // get the new position for old blocks after move down
     public class CheckEmptyPosition
     {
         public static float GetNextEmptyRow(GameContext context, Vector2 position)

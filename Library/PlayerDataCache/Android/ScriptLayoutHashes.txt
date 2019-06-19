@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-C:/Users/Pham An/Desktop/1.apk
+/Users/ma084/Unity/2.apk
 SceneListBegin?
 Assets/Scenes/Start.unity
 Assets/Scenes/Main.unity

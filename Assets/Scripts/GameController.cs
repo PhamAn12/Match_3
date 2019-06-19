@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     Systems _systems;
+    private Button btn;
     public GameStateContext GameState { get; } = new GameStateContext();
     private static GameController _Instance = null;
     
@@ -29,17 +30,26 @@ public class GameController : MonoBehaviour
             ));
         _systems.Initialize();
         
-
+        
+        
     }
 
     private void Update()
     {
+        btn = GameObject.Find("Canvas/Panel/Text").GetComponent<Button>();
+        
         _systems.Execute(); 
+        _systems.Cleanup();
     }
     private void OnDestroy()
     {
+        
+        _systems.ClearReactiveSystems();
         _systems.TearDown();
+        _systems.DeactivateReactiveSystems();
         Contexts.sharedInstance.game.Reset();
         Contexts.sharedInstance.input.Reset();
+        
+        
     }
 }

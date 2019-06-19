@@ -45,22 +45,5 @@ public class MoveSystem : ReactiveSystem<GameEntity>,IInitializeSystem
         _labelMove = GameObject.Find("Canvas/Panel/NumOfMove").GetComponent<Text>();
         _labelMove.text = "Move : " + move;
 
-//        if (move == 8)
-//        {
-//            var gameBoard = _context.CreateGameBoard().boadGame;
-//      
-//            for (var r = 0; r < gameBoard.row; r++)
-//            {
-//                for (var c = 0; c < gameBoard.columns; c++)
-//                {
-//                    if (Random.value > 0.8f)
-//                        _context.CreateRandomBlock(c, r);
-//                    else
-//                        _context.CreateRandomPiece(c, r);
-//                }
-//
-//            
-//            }
-//        }
     }
 }

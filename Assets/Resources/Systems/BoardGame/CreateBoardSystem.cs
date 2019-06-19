@@ -11,11 +11,6 @@ public class CreateBoardSystem : ReactiveSystem<GameEntity>, IInitializeSystem
 {
     readonly GameContext _context;
     readonly IGroup<GameEntity> _gameBoardElements;
-    static readonly string[] _items = {
-        "Prefabs/GenerateBrick",
-        "Prefabs/Piece0",
-        "Prefabs/Block_2"
-    };
     public CreateBoardSystem(GameContext Game) : base(Game)
     {
         _context = Game;
@@ -24,10 +19,9 @@ public class CreateBoardSystem : ReactiveSystem<GameEntity>, IInitializeSystem
 
     public void Initialize()
     {
-        //GameObject.Find("Main Camera").transform.localPosition = new Vector3(0.65f,1.55f,0);
-        _context.CreateHeart(15, 12);
-        _context.CreateHeart(12, 12);
-        _context.CreateHeart(13.5f, 12);
+//        _context.CreateHeart(15, 12);
+//        _context.CreateHeart(12, 12);
+//        _context.CreateHeart(13.5f, 12);
         var gameBoard = _context.CreateGameBoard().boadGame;
         
         for (var r = 0; r < gameBoard.row; r++)
