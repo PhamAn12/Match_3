@@ -65,7 +65,10 @@ public class AddViewSystem : ReactiveSystem<GameEntity>, ITearDownSystem
         for (int i = 0; i < viewElements.Length; i++)
         {
             GameEntity entity = viewElements[i];
-            entity.view.gameObject.DestroyGameObject(); // This extension method first calls Unlink and then Destroy
+            Debug.Log(entity);
+            entity.Destroy();
+
         }
     }
+    
 }

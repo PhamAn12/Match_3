@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 {
     Systems _systems;
     private Button btn;
+    Contexts _contexts;
     public GameStateContext GameState { get; } = new GameStateContext();
     private static GameController _Instance = null;
     
@@ -43,12 +44,13 @@ public class GameController : MonoBehaviour
     }
     private void OnDestroy()
     {
-        
+
         _systems.ClearReactiveSystems();
         _systems.TearDown();
         _systems.DeactivateReactiveSystems();
-        Contexts.sharedInstance.game.Reset();
-        Contexts.sharedInstance.input.Reset();
+        _contexts.Reset();
+        //Contexts.sharedInstance.game.Reset();
+        //Contexts.sharedInstance.input.Reset();
         
         
     }

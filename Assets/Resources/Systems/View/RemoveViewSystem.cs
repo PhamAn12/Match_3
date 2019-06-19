@@ -5,7 +5,8 @@ using Entitas;
 using Entitas.Unity;
 using UnityEngine;
 
-public class RemoveViewSystem : ReactiveSystem<GameEntity> {
+public class RemoveViewSystem : ReactiveSystem<GameEntity>,ITearDownSystem
+{
     public RemoveViewSystem(GameContext Game) : base(Game) {
     }
 
@@ -21,9 +22,13 @@ public class RemoveViewSystem : ReactiveSystem<GameEntity> {
     }
 
     protected override void Execute(List<GameEntity> entities) {
-        foreach (var e in entities) {   
+        foreach (var e in entities) {  
+            if(e != null)
+            {
                 destroyView(e.view);
-                e.RemoveView();           
+                e.RemoveView();
+            }
+                          
         }
     }
 
@@ -33,13 +38,23 @@ public class RemoveViewSystem : ReactiveSystem<GameEntity> {
         var color = spriteRenderer.color;
         color.a = 0f;
         spriteRenderer.material.DOColor(color, 0.9f);
+        
 //        gameObject.Unlink();
 //        Object.Destroy(gameObject);
         gameObject.transform
             .DOScale(Vector3.one * 0.9f, 0.9f)
             .OnComplete(() => {
+                if(gameObject != null)
+                {
                     gameObject.Unlink();
-                    Object.Destroy(gameObject);     
+                    Object.Destroy(gameObject);
+                }
+                         
             });
+    }
+
+    public void TearDown()
+    {
+        
     }
 }

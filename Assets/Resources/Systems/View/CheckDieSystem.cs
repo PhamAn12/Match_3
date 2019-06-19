@@ -108,22 +108,17 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
 //
 //            }
         }
-//        if(CheckColorBlock(blockSuffle) || entities[0].moveNum.value == 0)
-//        {
-//            Debug.Log("THUA CUOC");
-//            
-//            SceneManager.LoadScene("Lose");
-//        }
-        Delay(blockSuffle, entities);
-        SceneManager.LoadScene("Lose");
+        if (CheckColorBlock(blockSuffle) || entities[0].moveNum.value == 0)
+        {
+            Debug.Log("THUA CUOC");
+            
+            SceneManager.LoadScene("Lose");
+            
+        }
+        
     }
 
-    IEnumerator Delay(GameEntity[] blockSuffle, List<GameEntity> entities)
-    {
-        if (CheckColorBlock(blockSuffle)|| entities[0].moveNum.value == 0)
-            
-            yield return new WaitForSeconds(0.5f);
-    }
+    
     bool CheckDied(List<GameEntity> entities)
     {
         var blocksHeart = _heartGroup.GetEntities();
