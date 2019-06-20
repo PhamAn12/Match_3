@@ -11,6 +11,7 @@ public class AddViewSystem : ReactiveSystem<GameEntity>, ITearDownSystem
     
     readonly Transform _viewContainer = new GameObject("Views").transform;
     readonly GameContext _context;
+    private Systems _systems;
     IGroup<GameEntity> _viewGroup;
     public AddViewSystem(GameContext Game) : base(Game) {
         _context = Game;
@@ -61,14 +62,17 @@ public class AddViewSystem : ReactiveSystem<GameEntity>, ITearDownSystem
 
     public void TearDown()
     {
-        GameEntity[] viewElements = _viewGroup.GetEntities();
-        for (int i = 0; i < viewElements.Length; i++)
+        foreach (var viewElement in _viewGroup.GetEntities())
         {
-            GameEntity entity = viewElements[i];
-            Debug.Log(entity);
-            entity.Destroy();
+            if (viewElement.view.gameObject != null)
+            {
+                viewElement.view.gameObject.Unlink();
+                
+            }
 
+            //viewElement.Destroy();
         }
+        
     }
     
 }

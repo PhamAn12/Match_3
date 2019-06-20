@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using Entitas;
 using UnityEditor;
 using UnityEngine;
@@ -42,6 +43,7 @@ public class MoveSystem : ReactiveSystem<GameEntity>,IInitializeSystem,ICleanupS
     void UpdateMove(int move)
     {
         var moveEntiy = _context.CreateEntity();
+        
         moveEntiy.ReplaceMoveNum(move);
         Debug.Log(moveEntiy.moveNum.value);
         _labelMove = GameObject.Find("Canvas/Panel/NumOfMove").GetComponent<Text>();

@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     Systems _systems;
     private Button btn;
     Contexts _contexts;
+    private bool isQuitting = false;
     public GameStateContext GameState { get; } = new GameStateContext();
     private static GameController _Instance = null;
     
@@ -42,16 +43,23 @@ public class GameController : MonoBehaviour
         _systems.Execute(); 
         _systems.Cleanup();
     }
+    
+    private void OnApplicationQuit()
+    {
+        isQuitting = true;
+    }
+    
     private void OnDestroy()
     {
+            _systems.ClearReactiveSystems();
+            _systems.TearDown();
+            _systems.DeactivateReactiveSystems();
+            Contexts.sharedInstance.Reset();
+//            Contexts.sharedInstance.game.Reset();
+//            Contexts.sharedInstance.input.Reset();
+            //_systems.ActivateReactiveSystems();
 
-        _systems.ClearReactiveSystems();
-        _systems.TearDown();
-        _systems.DeactivateReactiveSystems();
-        _contexts.Reset();
-        //Contexts.sharedInstance.game.Reset();
-        //Contexts.sharedInstance.input.Reset();
-        
-        
     }
+
+    
 }

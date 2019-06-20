@@ -23,11 +23,10 @@ public class RemoveViewSystem : ReactiveSystem<GameEntity>,ITearDownSystem
 
     protected override void Execute(List<GameEntity> entities) {
         foreach (var e in entities) {  
-            if(e != null)
-            {
+            
                 destroyView(e.view);
                 e.RemoveView();
-            }
+            
                           
         }
     }
@@ -44,11 +43,10 @@ public class RemoveViewSystem : ReactiveSystem<GameEntity>,ITearDownSystem
         gameObject.transform
             .DOScale(Vector3.one * 0.9f, 0.9f)
             .OnComplete(() => {
-                if(gameObject != null)
-                {
+                
                     gameObject.Unlink();
                     Object.Destroy(gameObject);
-                }
+                
                          
             });
     }

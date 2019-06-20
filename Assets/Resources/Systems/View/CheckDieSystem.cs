@@ -27,8 +27,10 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
     {
         _context = Game;
         _heartGroup = _context.GetGroup(GameMatcher.AllOf(GameMatcher.Heart, GameMatcher.Position));
-        _blockGroup = _context.GetGroup(GameMatcher.AllOf(GameMatcher.Position, GameMatcher.BoadGameElement).NoneOf(GameMatcher.Heart, GameMatcher.MoveNum));
-        _blockSuffle = _context.GetGroup(GameMatcher.AllOf(GameMatcher.Position, GameMatcher.BoadGameElement,GameMatcher.Downable).NoneOf(GameMatcher.Heart, GameMatcher.MoveNum));
+        _blockGroup = _context.GetGroup(GameMatcher.AllOf(GameMatcher.Position, 
+            GameMatcher.BoadGameElement).NoneOf(GameMatcher.Heart, GameMatcher.MoveNum));
+        _blockSuffle = _context.GetGroup(GameMatcher.AllOf(GameMatcher.Position, 
+            GameMatcher.BoadGameElement,GameMatcher.Downable).NoneOf(GameMatcher.Heart, GameMatcher.MoveNum));
     }
 
 
@@ -54,27 +56,16 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
         int rnd;
         List<GameEntity> _listBlockSuffle = null;
         for (int i = 0; i < Size * Size; i++) Free[i % Size, i / Size] = 2;
-        if (CheckColorBlock(blockSuffle))
-        {
-            Debug.Log("chet");
-        }
-        else
-            Debug.Log("CHUa chet");
+        
+        // check if num of block available
         if(CheckColorBlock(blockSuffle) == false)
         {
-            
+            // call while still can't use move
             while(CheckDied(entities) == false)
             {
                 List<int> randomList = new List<int>();
-                //if(i > 3) break;
+                
                 Debug.Log("DIE");
-                //if (blocksHeart.Length > 0)
-                //    blocksHeart[0].isDestroyed = true;
-//                foreach (var b in blockSuffle)
-//                {
-//                    //Debug.Log("BBBB :" + b);
-//                }
-
                 // Suffle all blocks if can't move
 
                 for (int t = 0; t < blockSuffle.Length; t++)
@@ -94,13 +85,6 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
 
                 }
 
-//                foreach (var b in blockSuffle)
-//                {
-//                    //Debug.Log("AAAA :" + b);
-//                }
-                //Convert2Block(blockSuffle);
-                
-
             }
 //            if (CheckDied(entities))
 //            {
@@ -108,17 +92,23 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
 //
 //            }
         }
-        if (CheckColorBlock(blockSuffle) || entities[0].moveNum.value == 0)
+        if (CheckColorBlock(blockSuffle) || entities[0].moveNum.value == 7)
         {
             Debug.Log("THUA CUOC");
+            GameController.Instance.StartCoroutine(DelayBeforeSwitchScene(3));
             
-            SceneManager.LoadScene("Lose");
-            
-        }
-        
+        }    
+
     }
 
-    
+    private IEnumerator DelayBeforeSwitchScene(float time)
+    {
+        yield return  new WaitForSeconds(time);
+        SceneManager.LoadScene("Lose");
+
+    }
+
+    // check can't move 
     bool CheckDied(List<GameEntity> entities)
     {
         var blocksHeart = _heartGroup.GetEntities();
@@ -129,7 +119,7 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
         }
 //        Debug.Log("block 0 : " + blocks[0]);
         
-// check can't move 
+
         var name = blocks[0].asset.name;
         var x = blocks[0].position.value.x;
         var y = blocks[0].position.value.y;
