@@ -29,9 +29,14 @@ public sealed class AnimatePositionSystem : ReactiveSystem<GameEntity>
     {
         
         var gameBoard = _context.CreateGameBoard().boadGame;
-        Debug.Log("gameboard columns:" + gameBoard.columns);
+        Debug.Log("gameboard columnswwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww:" + gameBoard.columns);
         var topRow = _context.CreateGameBoard().boadGame.row * 1.5f;
-
+        var topCol = gameBoard.columns * 1.5f;
+        float length;
+        if (topRow > topCol)
+            length = topRow;
+        else
+            length = topCol;
         var movebleBlock = _movebleBlock.GetEntities();
         List<GameEntity> movebleBlockList = new List<GameEntity>();
         foreach (var m in movebleBlock)
@@ -41,19 +46,20 @@ public sealed class AnimatePositionSystem : ReactiveSystem<GameEntity>
         }
 
 
-        for (var r = 0 * 1.5f; r < topRow; r += 1.5f)
+        for (var r = 0 * 1.5f; r < length; r += 1.5f)
         {
             var count = 0; // count number of block be created in a column
             var tempr = r;
             foreach (var m in movebleBlockList)
             {
+                //Debug.Log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx "+m.view.gameObject.transform.position.x);
                 if ((m.view.gameObject.transform.position.x == tempr) && (m.asset.name != "Prefabs/GenerateBrick"))
                 {
                     count++;
                 }
             }    
 
-//            Debug.Log("COUNT : " + count + " r : " + r);
+            //Debug.Log("COUNT : " + count + " r : " + r);
             if (count == 0)
                 foreach (var e in entities)
                 {

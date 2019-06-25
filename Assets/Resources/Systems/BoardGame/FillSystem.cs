@@ -23,7 +23,7 @@ public sealed class FillSystem : ReactiveSystem<GameEntity> {
 
     protected override void Execute(List<GameEntity> entities) {
         var gameBoard = _context.CreateGameBoard().boadGame;
-        //Debug.Log("gameboard columns:" + gameBoard.columns );
+        Debug.Log("gameboard columns:" + gameBoard.columns );
         for (var c = 0*1.5f; c < gameBoard.columns * 1.5f; c = c + 1.5f) {
             var position = new Vector2(c, gameBoard.row*1.5f);
             var nextRowPos = CheckEmptyPosition.GetNextEmptyRow(_context, position);

@@ -58,19 +58,30 @@ public class AddViewSystem : ReactiveSystem<GameEntity>, ITearDownSystem
                 gameObject.Link(e);
             }
         }
+        foreach(var view in _viewGroup.GetEntities())
+        {
+            Debug.Log("ccccccccccccccccccccccccccccccc : " + view.view.gameObject.GetEntityLink());
+        }
     }
 
     public void TearDown()
     {
         foreach (var viewElement in _viewGroup.GetEntities())
         {
+            Debug.Log("vlvlvlvlvlvlvlvvlvllvlvlvlvlvlvlvlvlv : " + viewElement.view.gameObject.GetEntityLink());
+        }
+        foreach (var viewElement in _viewGroup.GetEntities())
+        {
+            Debug.Log("kdkdkdkdkđkkdkdkdkdkdkdkdkdkdkd : " + viewElement.view.gameObject.GetEntityLink());
             if (viewElement.view.gameObject != null)
             {
                 viewElement.view.gameObject.Unlink();
-                
-            }
+                Debug.Log("IN TEARDOWN :" + viewElement);
 
-            //viewElement.Destroy();
+            }
+            else
+                Debug.Log("VO DAY");
+                viewElement.Destroy();
         }
         
     }

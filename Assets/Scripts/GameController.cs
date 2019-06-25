@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Linq.Expressions;
+using DG.Tweening;
 using Entitas;
+using Entitas.Unity;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
@@ -12,6 +15,7 @@ public class GameController : MonoBehaviour
     private bool isQuitting = false;
     public GameStateContext GameState { get; } = new GameStateContext();
     private static GameController _Instance = null;
+    IGroup<GameEntity> _viewGroup;
     
     public static GameController Instance
     {
@@ -51,15 +55,16 @@ public class GameController : MonoBehaviour
     
     private void OnDestroy()
     {
-            _systems.ClearReactiveSystems();
-            _systems.TearDown();
-            _systems.DeactivateReactiveSystems();
-            Contexts.sharedInstance.Reset();
-//            Contexts.sharedInstance.game.Reset();
-//            Contexts.sharedInstance.input.Reset();
-            //_systems.ActivateReactiveSystems();
+        _systems.TearDown();
+        
+        _systems.DeactivateReactiveSystems();
+        Contexts.sharedInstance.Reset();
+        //SceneManager.LoadScene("Lose");
+        //Contexts.sharedInstance.game.Reset();
+        //Contexts.sharedInstance.input.Reset();
+        //_systems.ActivateReactiveSystems();
 
     }
-
     
+
 }

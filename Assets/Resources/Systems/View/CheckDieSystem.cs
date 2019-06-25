@@ -94,8 +94,9 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
         }
         if (CheckColorBlock(blockSuffle) || entities[0].moveNum.value == 7)
         {
+            
             Debug.Log("THUA CUOC");
-            GameController.Instance.StartCoroutine(DelayBeforeSwitchScene(3));
+            GameController.Instance.StartCoroutine(DelayBeforeSwitchScene(1));
             
         }    
 
@@ -136,7 +137,7 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
             
             //Debug.Log("Queue count :" + queue.Count);
             GameEntity blockPeek = queue.Peek();
-            Debug.Log("GameEntityPeek :" + blockPeek.position.value.x + "  " + blockPeek.position.value.y);
+            //Debug.Log("GameEntityPeek :" + blockPeek.position.value.x + "  " + blockPeek.position.value.y);
             queue.Dequeue();
             foreach (var b in blocks)
             {
@@ -158,18 +159,18 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
                                 == i.position.value.y) || (b.position.value.x == i.position.value.x - 1.5 && b.position.value.y
                                 == i.position.value.y)))
                             {
-                                Debug.Log("i11" + i.position.value.x + "  " + i.position.value.y);
-                                Debug.Log("ChuaDie11");
-                                Debug.Log("b11" + b.position.value.x + "  " + b.position.value.y);
+                                //Debug.Log("i11" + i.position.value.x + "  " + i.position.value.y);
+                                //Debug.Log("ChuaDie11");
+                                //Debug.Log("b11" + b.position.value.x + "  " + b.position.value.y);
                                 return true;
                             }
                         }
-                        Debug.Log("b1" + b.position.value.x + "  " + b.position.value.y);
+                        //Debug.Log("b1" + b.position.value.x + "  " + b.position.value.y);
                         flag = 0;
                     }
                     else if (b.asset.name == blockPeek.asset.name)
                     {
-                        Debug.Log("ChuaDie1");
+                        //Debug.Log("ChuaDie1");
                         flag = 1;
                         return true;
                     }
@@ -193,18 +194,18 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
                                 == i.position.value.y) || (b.position.value.x == i.position.value.x - 1.5 && b.position.value.y
                                 == i.position.value.y)))
                             {
-                                Debug.Log("i22" + i.position.value.x + "  " + i.position.value.y);
-                                Debug.Log("ChuaDie22");
-                                Debug.Log("b22" + b.position.value.x + "  " + b.position.value.y);
+                                //Debug.Log("i22" + i.position.value.x + "  " + i.position.value.y);
+                                //Debug.Log("ChuaDie22");
+                                //Debug.Log("b22" + b.position.value.x + "  " + b.position.value.y);
                                 return true;
                             }
                         }
-                        Debug.Log("b2" + b.position.value.x + "  " + b.position.value.y);
+                        //Debug.Log("b2" + b.position.value.x + "  " + b.position.value.y);
                         flag = 0;
                     }
                     else if (b.asset.name == blockPeek.asset.name)
                     {
-                        Debug.Log("ChuaDie2");
+                        //Debug.Log("ChuaDie2");
                         flag = 1;
                         return true;
                     }
@@ -228,9 +229,9 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
                                 == i.position.value.y) || (b.position.value.x == i.position.value.x - 1.5 && b.position.value.y
                                 == i.position.value.y)))
                             {
-                                Debug.Log("i33" + i.position.value.x + "  " + i.position.value.y);
-                                Debug.Log("ChuaDie33");
-                                Debug.Log("b33" + b.position.value.x + "  " + b.position.value.y);
+                                //Debug.Log("i33" + i.position.value.x + "  " + i.position.value.y);
+                                //Debug.Log("ChuaDie33");
+                                //Debug.Log("b33" + b.position.value.x + "  " + b.position.value.y);
                                 return true;
                             }
                         }
@@ -263,18 +264,18 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
                                 == i.position.value.y) || (b.position.value.x == i.position.value.x - 1.5 && b.position.value.y
                                 == i.position.value.y)))
                             {
-                                Debug.Log("i44" + i.position.value.x + "  " + i.position.value.y);
-                                Debug.Log("ChuaDie44");
-                                Debug.Log("b44" + b.position.value.x + "  " + b.position.value.y);
+                                //Debug.Log("i44" + i.position.value.x + "  " + i.position.value.y);
+                                //Debug.Log("ChuaDie44");
+                                //Debug.Log("b44" + b.position.value.x + "  " + b.position.value.y);
                                 return true;
                             }
                         }
-                        Debug.Log("b4" + b.position.value.x + "  " + b.position.value.y);
+                        //Debug.Log("b4" + b.position.value.x + "  " + b.position.value.y);
                         flag = 0;
                     }
                     else if(b.asset.name == blockPeek.asset.name)
                     {
-                        Debug.Log("ChuaDie4");
+                        //Debug.Log("ChuaDie4");
                         flag = 1;
                         return true;
                     }
@@ -308,7 +309,7 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
             if (block.asset.name.Equals("Prefabs/Piece4")) s5.Add(block);
         }
 
-        Debug.Log("Counttttt :" + s1.Count + " " + s2.Count + " " + s3.Count + " " + s4.Count + " " + s5.Count);
+        //Debug.Log("Counttttt :" + s1.Count + " " + s2.Count + " " + s3.Count + " " + s4.Count + " " + s5.Count);
         //Debug.Log("Lengthhhh :" + blockSuffle.Length);
         if ((s1.Count == 1 || s1.Count == 0) && (s2.Count == 1 || s2.Count == 0) && (s3.Count == 1 || s3.Count == 0) &&
             (s4.Count == 1 || s4.Count == 0) && (s5.Count == 1 || s5.Count == 0))

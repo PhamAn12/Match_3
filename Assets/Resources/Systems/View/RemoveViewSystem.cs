@@ -5,7 +5,7 @@ using Entitas;
 using Entitas.Unity;
 using UnityEngine;
 
-public class RemoveViewSystem : ReactiveSystem<GameEntity>,ITearDownSystem
+public class RemoveViewSystem : ReactiveSystem<GameEntity>
 {
     public RemoveViewSystem(GameContext Game) : base(Game) {
     }
@@ -43,16 +43,9 @@ public class RemoveViewSystem : ReactiveSystem<GameEntity>,ITearDownSystem
         gameObject.transform
             .DOScale(Vector3.one * 0.9f, 0.9f)
             .OnComplete(() => {
-                
-                    gameObject.Unlink();
-                    Object.Destroy(gameObject);
-                
-                         
+                gameObject.Unlink();
+                Object.Destroy(gameObject);
             });
     }
 
-    public void TearDown()
-    {
-        
-    }
 }

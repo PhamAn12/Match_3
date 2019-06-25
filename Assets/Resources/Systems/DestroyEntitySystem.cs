@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using DG.Tweening;
 using Entitas;
+using Entitas.Unity;
+using UnityEngine;
 
 public class DestroyEntitySystem : ReactiveSystem<GameEntity>
 {
@@ -20,7 +23,8 @@ public class DestroyEntitySystem : ReactiveSystem<GameEntity>
     {
         foreach (var e in entities)
         {
-            e.Destroy();
+            
+            e.Destroy();   
         }
     }
 }
