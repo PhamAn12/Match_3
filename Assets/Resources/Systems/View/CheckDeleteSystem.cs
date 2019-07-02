@@ -8,13 +8,13 @@ using UnityEngine;
 
 public class CheckDeleteSystem : ReactiveSystem<GameEntity>
 {
-    private readonly GameContext _context;
+    private readonly GameContext context;
     private readonly string ASSET_NAME_BRICK = "Prefabs/GenerateBrick";
-    private IGroup<GameEntity> _blockGroup;
+    private IGroup<GameEntity> blockGroup;
     public CheckDeleteSystem(GameContext Game) : base(Game)
     {
-        _context = Game;
-        _blockGroup = _context.GetGroup(GameMatcher.AllOf(GameMatcher.Position,GameMatcher.BoadGameElement).NoneOf(GameMatcher.Tabbed));
+        context = Game;
+        blockGroup = context.GetGroup(GameMatcher.AllOf(GameMatcher.Position,GameMatcher.BoadGameElement).NoneOf(GameMatcher.Tabbed));
 
     }  
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -51,7 +51,7 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
                 //Debug.Log("first element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
                 q.Dequeue();
                 
-                var blocks = _blockGroup.GetEntities();
+                var blocks = blockGroup.GetEntities();
                 foreach (var b in blocks)
                 {
                     //Debug.Log("free in b" + Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)]);

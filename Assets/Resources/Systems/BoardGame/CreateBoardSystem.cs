@@ -9,29 +9,24 @@ using Random = UnityEngine.Random;
 // Create board game by using RandomBoardElement
 public class CreateBoardSystem : ReactiveSystem<GameEntity>, IInitializeSystem
 {
-    readonly GameContext _context;
-    readonly IGroup<GameEntity> _gameBoardElements;
+    readonly GameContext gameContext;
     public CreateBoardSystem(GameContext Game) : base(Game)
     {
-        _context = Game;
-        _gameBoardElements = _context.GetGroup(GameMatcher.AllOf(GameMatcher.BoadGameElement, GameMatcher.Position));
+        gameContext = Game;
     }
 
     public void Initialize()
     {
-//        _context.CreateHeart(15, 12);
-//        _context.CreateHeart(12, 12);
-//        _context.CreateHeart(13.5f, 12);
-        var gameBoard = _context.CreateGameBoard().boadGame;
+        var gameBoard = gameContext.CreateGameBoard().boadGame;
         
         for (var r = 0; r < gameBoard.row; r++)
         {
             for (var c = 0; c < gameBoard.columns; c++)
             {
-                if (Random.value > 0.91f)
-                    _context.CreateRandomBlock(c, r);
+                if (Random.value > 0.95f)
+                    gameContext.CreateRandomBlock(c, r);
                 else
-                    _context.CreateRandomPiece(c, r);
+                    gameContext.CreateRandomPiece(c, r);
             }
 
             
@@ -41,7 +36,7 @@ public class CreateBoardSystem : ReactiveSystem<GameEntity>, IInitializeSystem
     protected override void Execute(List<GameEntity> entities)
     {
         
-        UnityEngine.Debug.Log("abc");
+        
     }
 
     protected override bool Filter(GameEntity entity)

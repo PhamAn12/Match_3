@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace;
@@ -7,10 +8,10 @@ using UnityEngine;
 
 public class FallSystem : ReactiveSystem<GameEntity>
 {
-    private readonly GameContext _context;
+    private readonly GameContext gameContext;
     public FallSystem(GameContext context) : base(context)
     {
-        _context = context;
+        gameContext = context;
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -25,7 +26,7 @@ public class FallSystem : ReactiveSystem<GameEntity>
 
     protected override void Execute(List<GameEntity> entities)
     {
-        var gameBoard = _context.CreateGameBoard().boadGame;
+        var gameBoard = gameContext.CreateGameBoard().boadGame;
         
         //Debug.Log(gameBoard.columns + "va" + gameBoard.row);
         for (var c = 0*1.5f; c < gameBoard.columns*1.5f; c += 1.5f) {
@@ -33,7 +34,7 @@ public class FallSystem : ReactiveSystem<GameEntity>
                 var position = new Vector2(c, r);
 
                 //Debug.Log(position.x + " and " + position.y);
-                var movables = _context.GetEntitiesWithPosition(position)
+                var movables = gameContext.GetEntitiesWithPosition(position)
                     .Where(e => e.isDownable)
                     .ToArray();
                 
@@ -47,7 +48,7 @@ public class FallSystem : ReactiveSystem<GameEntity>
     
     void MoveDown(GameEntity entity, Vector2 position)
     {
-        var nextRowPos = CheckEmptyPosition.GetNextEmptyRow(_context, position);
+        var nextRowPos = CheckEmptyPosition.GetNextEmptyRow(gameContext, position);
         //Debug.Log("NRP " + nextRowPos + " Y " + position.y);
         if (nextRowPos != position.y)
         {

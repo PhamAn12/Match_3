@@ -7,10 +7,10 @@ using UnityEngine;
 
 public class CountRemovedBlock : ReactiveSystem<GameEntity>
 {
-    private readonly GameContext _context;
-    public CountRemovedBlock(GameContext context) : base(context)
+    private readonly GameContext context;
+    public CountRemovedBlock(GameContext game) : base(game)
     {
-        _context = context;
+        context = game;
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -28,7 +28,7 @@ public class CountRemovedBlock : ReactiveSystem<GameEntity>
         
 
 
-        var gameBoard = _context.CreateGameBoard().boadGame;
+        var gameBoard = context.CreateGameBoard().boadGame;
 
         Debug.Log(gameBoard.columns + "va" + gameBoard.row);
         for (var c = 0 * 1.5f; c < gameBoard.columns * 1.5f; c += 1.5f)
@@ -38,7 +38,7 @@ public class CountRemovedBlock : ReactiveSystem<GameEntity>
                 var position = new Vector2(c, r);
 
                 //Debug.Log(position.x + " and " + position.y);
-                var movables = _context.GetEntitiesWithPosition(position)
+                var movables = context.GetEntitiesWithPosition(position)
                     .ToArray();
 
                 foreach (var e in movables)

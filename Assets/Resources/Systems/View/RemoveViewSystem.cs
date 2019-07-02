@@ -25,9 +25,7 @@ public class RemoveViewSystem : ReactiveSystem<GameEntity>
         foreach (var e in entities) {  
             
                 destroyView(e.view);
-                e.RemoveView();
-            
-                          
+                e.RemoveView();                          
         }
     }
 
@@ -36,15 +34,12 @@ public class RemoveViewSystem : ReactiveSystem<GameEntity>
         var spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         var color = spriteRenderer.color;
         color.a = 0f;
-        spriteRenderer.material.DOColor(color, 0.9f);
-        
-//        gameObject.Unlink();
-//        Object.Destroy(gameObject);
+        spriteRenderer.material.DOColor(color, 0.5f);
         gameObject.transform
-            .DOScale(Vector3.one * 0.9f, 0.9f)
+            .DOScale(Vector3.one * 0.9f, 0.5f)
             .OnComplete(() => {
                 gameObject.Unlink();
-                Object.Destroy(gameObject,2);
+                //Object.Destroy(gameObject);
             });
     }
 

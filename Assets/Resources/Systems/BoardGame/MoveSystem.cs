@@ -7,14 +7,14 @@ using UnityEngine.UI;
 
 public class MoveSystem : ReactiveSystem<GameEntity>,IInitializeSystem,ICleanupSystem
 {
-    private Text _labelMove;
-    private GameContext _context;
+    private Text labelMove;
+    private GameContext gameContext;
     private int move = 10;
-    IGroup<GameEntity> _moveGroup;
+    IGroup<GameEntity> moveGroup;
     public MoveSystem(GameContext Game) : base(Game)
     {
-        _context = Game;
-        _moveGroup = _context.GetGroup(GameMatcher.MoveNum);
+        gameContext = Game;
+        moveGroup = gameContext.GetGroup(GameMatcher.MoveNum);
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -42,18 +42,18 @@ public class MoveSystem : ReactiveSystem<GameEntity>,IInitializeSystem,ICleanupS
 
     void UpdateMove(int move)
     {
-        var moveEntiy = _context.CreateEntity();
+        var moveEntiy = gameContext.CreateEntity();
         
         moveEntiy.ReplaceMoveNum(move);
-        Debug.Log(moveEntiy.moveNum.value);
-        _labelMove = GameObject.Find("Canvas/Panel/NumOfMove").GetComponent<Text>();
-        _labelMove.text = "Move : " + move;
+//        Debug.Log(moveEntiy.moveNum.value);
+        labelMove = GameObject.Find("Canvas/Panel/NumOfMove").GetComponent<Text>();
+        labelMove.text = "Move : " + move;
 
     }
 
     public void Cleanup()
     {
-        foreach(var e in _moveGroup.GetEntities())
+        foreach(var e in moveGroup.GetEntities())
         {
             e.Destroy();
         }

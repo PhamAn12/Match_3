@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class RenderSpriteSystems : ReactiveSystem<GameEntity> 
 {
-    readonly GameContext _context;
+    readonly GameContext context;
 
     public RenderSpriteSystems(GameContext Game) : base(Game) {
-        _context = Game;
+        context = Game;
     }
     public RenderSpriteSystems(IContext<GameEntity> context) : base(context)
     {

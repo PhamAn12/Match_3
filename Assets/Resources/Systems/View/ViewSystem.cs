@@ -13,7 +13,5 @@ public class ViewSystem : Feature
         Add(new CheckDieSystem(gameContext));
         Add(new DestroyEntitySystem(gameContext));
         Add(new DestroyBoardGameSystem(gameContext));
-        
-        //Add(new CheckDeleteSystem(gameContext));
     }
 }

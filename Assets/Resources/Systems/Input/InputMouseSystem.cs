@@ -7,18 +7,18 @@ using Entitas;
 
 public class InputMouseSystem : IExecuteSystem, ICleanupSystem
 {
-    private readonly InputContext _context;
-    private readonly IGroup<InputEntity> _inputs;
+    private readonly InputContext inputContext;
+    private readonly IGroup<InputEntity> inputs;
     public InputMouseSystem(InputContext Input)
     {
-        _context = Input;
-        _inputs = _context.GetGroup(InputMatcher.Input);
+        inputContext = Input;
+        inputs = inputContext.GetGroup(InputMatcher.Input);
     }
 
 
     public void Execute()
     {
-        var elements = _inputs.GetEntities();
+        var elements = inputs.GetEntities();
         var mousePosition = Input.mousePosition;
         if (Input.GetMouseButtonDown(0))
         {
@@ -28,9 +28,9 @@ public class InputMouseSystem : IExecuteSystem, ICleanupSystem
             {
                 var pos = hit.collider.transform.position;
             
-                _context.CreateEntity().AddInput( pos.x,  pos.y);
+                inputContext.CreateEntity().AddInput( pos.x,  pos.y);
 //                Debug.Log(elements);
-                Debug.Log("POS   " + pos);
+//                Debug.Log("POS   " + pos);
             }
         }
         
@@ -38,9 +38,9 @@ public class InputMouseSystem : IExecuteSystem, ICleanupSystem
     
     public void Cleanup()
     {
-        foreach (var e in _inputs.GetEntities())
+        foreach (var e in inputs.GetEntities())
         {
-            Debug.Log("On cleanup system");
+            //Debug.Log("On cleanup system");
             e.Destroy();
         }
     }

@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 public class ScoreSystem : ReactiveSystem<GameEntity>,IInitializeSystem,ICleanupSystem
 {
-    readonly GameContext _context;
+    readonly GameContext gameContext;
     int count = 0;
-    private Text _label;
-    IGroup<GameEntity> _scoreGroup;
+    private Text label;
+    IGroup<GameEntity> scoreGroup;
     public ScoreSystem(GameContext Game) : base(Game) {
-        _context = Game;
-        _scoreGroup = _context.GetGroup(GameMatcher.Score);
+        gameContext = Game;
+        scoreGroup = gameContext.GetGroup(GameMatcher.Score);
     }
 
     public void Initialize()
@@ -43,18 +43,18 @@ public class ScoreSystem : ReactiveSystem<GameEntity>,IInitializeSystem,ICleanup
     }
     void updateScore(int score)
     {
-        var scoreEntity = _context.CreateEntity();
+        var scoreEntity = gameContext.CreateEntity();
         scoreEntity.ReplaceScore(score);
-        Debug.Log("score value : " + scoreEntity.score.value);
-        _label = GameObject.Find("Canvas/Panel/Text").GetComponent<Text>();
+//        Debug.Log("score value : " + scoreEntity.score.value);
+        label = GameObject.Find("Canvas/Panel/Text").GetComponent<Text>();
         
-        _label.text = "Score : " + score; 
+        label.text = "Score : " + score; 
         
     }
 
     public void Cleanup()
     {
-        foreach(var e in _scoreGroup.GetEntities())
+        foreach(var e in scoreGroup.GetEntities())
         {
             e.Destroy();
         }

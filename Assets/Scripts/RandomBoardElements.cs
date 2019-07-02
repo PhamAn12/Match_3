@@ -13,7 +13,7 @@ using Random = UnityEngine.Random;
 public static class RandomBoardElements 
 {
     // private static  GameObject block;
-    static readonly string[] _items = {
+    static readonly string[] items = {
         //"Prefabs/GenerateBrick",
         "Prefabs/Piece0",
         "Prefabs/Block_2",
@@ -24,7 +24,7 @@ public static class RandomBoardElements
 
     };
 
-    static Button _okButton;
+    static Button okButton;
     
     public static GameEntity CreateGameBoard(this GameContext context)
     {
@@ -55,7 +55,7 @@ public static class RandomBoardElements
             entity.AddAsset("Prefabs/Piece0");
         }
         else
-            entity.AddAsset(_items[Random.Range(0, _items.Length)]);
+            entity.AddAsset(items[Random.Range(0, items.Length)]);
         //entity.isMovable = true;
         entity.isBoadGameElement = true;
         entity.isDownable = true;

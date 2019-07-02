@@ -21,16 +21,10 @@ public class SizeNum : MonoBehaviour
             _okButton = GameObject.Find("Canvas/OptionMenu/OkButton").GetComponent<Button>();
             _inputCols = GameObject.Find("Canvas/OptionMenu/InputRow").GetComponent<InputField>();
             _inputCols.text = "";
-            
-//            _okButton.interactable = false;
-//            var colors = _okButton.colors;
-//            colors.normalColor = Color.gray;
-//            _okButton.colors = colors;
         }
         
         else
         {
- //           _okButton.interactable = true;
             PlayerPrefs.SetString("SizeRows", rows);
             Debug.Log("rows :" + rows);
         }
@@ -45,15 +39,9 @@ public class SizeNum : MonoBehaviour
             _okButton = GameObject.Find("Canvas/OptionMenu/OkButton").GetComponent<Button>();
             _inputRows = GameObject.Find("Canvas/OptionMenu/InputCol").GetComponent<InputField>();
             _inputRows.text = "";
-            
-//            _okButton.interactable = false;
-//            var colors = _okButton.colors;
-//            colors.normalColor = Color.gray;
-//            _okButton.colors = colors;
         } 
         else
         {
-//            _okButton.interactable = true;
             PlayerPrefs.SetString("SizeCols", cols);
             Debug.Log("cols :" + cols);
         }

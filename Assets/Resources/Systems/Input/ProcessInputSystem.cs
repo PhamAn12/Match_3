@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ProcessInputSystem : ReactiveSystem<InputEntity>
 {
-    private readonly GameContext _context;
+    private readonly GameContext gameContext;
     public ProcessInputSystem(InputContext Input, GameContext Game) : base(Input)
     {
-        _context = Game;
+        gameContext = Game;
     }
 
     protected override ICollector<InputEntity> GetTrigger(IContext<InputEntity> context)
@@ -27,7 +27,7 @@ public class ProcessInputSystem : ReactiveSystem<InputEntity>
 //        Debug.Log("INPUT" + input + "INPUT ENTITY" + inputEntity);
 //
 //        Debug.Log("position of input entity :" + input.x + "  " + input.y);
-        foreach (var e in _context.GetEntitiesWithPosition(new Vector2(input.x,input.y)))
+        foreach (var e in gameContext.GetEntitiesWithPosition(new Vector2(input.x,input.y)))
         {
             
 //            Debug.Log("list: " + e.ToString());

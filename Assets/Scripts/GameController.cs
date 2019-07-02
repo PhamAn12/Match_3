@@ -9,17 +9,17 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    Systems _systems;
-    Contexts _contexts;
-    private static GameController _Instance = null;
-    IGroup<GameEntity> _viewGroup;
+    Systems systems;
+    Contexts contexts = Contexts.sharedInstance;
+    private static GameController instance = null;
+    IGroup<GameEntity> viewGroup;
     
     public static GameController Instance
     {
         get {
-            if (_Instance == null)
-                _Instance = FindObjectOfType<GameController>();
-            return _Instance;
+            if (instance == null)
+                instance = FindObjectOfType<GameController>();
+            return instance;
         }
     }
     private void Start()
@@ -27,11 +27,11 @@ public class GameController : MonoBehaviour
         var contexts = Contexts.sharedInstance;
 
         
-        _systems = new Feature("Systems")
+        systems = new Feature("Systems")
             .Add(new InputSystem(contexts.input, contexts.game)
             .Add(new BoardSystems(contexts.game)
             ));
-        _systems.Initialize();
+        systems.Initialize();
         
         
         
@@ -39,21 +39,16 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {   
-        _systems.Execute(); 
-        _systems.Cleanup();
+        systems.Execute(); 
+        //_systems.Cleanup();
     }
-    
-    
-    
+
     private void OnDestroy()
     {
-        _systems.TearDown();
-        _systems.DeactivateReactiveSystems();
-        //Contexts.sharedInstance.Reset();
-        Contexts.sharedInstance.game.Reset();
-        Contexts.sharedInstance.gameState.Reset();
-        Contexts.sharedInstance.input.Reset();
-        //_systems.ActivateReactiveSystems();
+        systems.ClearReactiveSystems();
+        //_systems.TearDown();
+        systems.DeactivateReactiveSystems();
+        contexts.Reset();
 
     }
     

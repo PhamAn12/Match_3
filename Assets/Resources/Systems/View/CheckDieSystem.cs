@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using Entitas;
+using Entitas.Unity;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Experimental.PlayerLoop;
@@ -15,22 +16,24 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
 {
     Contexts context;
     private int Size = 9;
-    private readonly GameContext _context;
-    private IGroup<GameEntity> _heartGroup;
+    private readonly GameContext gameContext;
+    private IGroup<GameEntity> heartGroup;
     // All block in the board
-    private IGroup<GameEntity> _blockGroup;
+    private IGroup<GameEntity> blockGroup;
     // All block without brick
-    private IGroup<GameEntity> _blockSuffle;
+    private IGroup<GameEntity> blockSuffle;
+    private IGroup<GameEntity> viewGroup;
     private readonly string ASSET_NAME_BRICK = "Prefabs/GenerateBrick";
 
     public CheckDieSystem(GameContext Game) : base(Game)
     {
-        _context = Game;
-        _heartGroup = _context.GetGroup(GameMatcher.AllOf(GameMatcher.Heart, GameMatcher.Position));
-        _blockGroup = _context.GetGroup(GameMatcher.AllOf(GameMatcher.Position, 
+        gameContext = Game;
+        heartGroup = gameContext.GetGroup(GameMatcher.AllOf(GameMatcher.Heart, GameMatcher.Position));
+        blockGroup = gameContext.GetGroup(GameMatcher.AllOf(GameMatcher.Position, 
             GameMatcher.BoadGameElement).NoneOf(GameMatcher.Heart, GameMatcher.MoveNum));
-        _blockSuffle = _context.GetGroup(GameMatcher.AllOf(GameMatcher.Position, 
+        blockSuffle = gameContext.GetGroup(GameMatcher.AllOf(GameMatcher.Position, 
             GameMatcher.BoadGameElement,GameMatcher.Downable).NoneOf(GameMatcher.Heart, GameMatcher.MoveNum));
+        viewGroup = gameContext.GetGroup(GameMatcher.View);
     }
 
 
@@ -46,11 +49,9 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
 
     protected override void Execute(List<GameEntity> entities)
     {
-        
-        Debug.Log("HHHHHHHHHHHHHHHHHHH :" + Screen.width + "  " + Screen.height);
-        var blocksHeart = _heartGroup.GetEntities();
-        var blocks = _blockGroup.GetEntities();
-        var blockSuffle = _blockSuffle.GetEntities();
+        var blocksHeart = heartGroup.GetEntities();
+        var blocks = blockGroup.GetEntities();
+        var blockSuffles = blockSuffle.GetEntities();
         int[,] Free = new int[Size, Size];
         
         int rnd;
@@ -58,45 +59,40 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
         for (int i = 0; i < Size * Size; i++) Free[i % Size, i / Size] = 2;
         
         // check if num of block available
-        if(CheckColorBlock(blockSuffle) == false)
+        if(CheckColorBlock(blockSuffles) == false)
         {
             // call while still can't use move
-            while(CheckDied(entities) == false)
+            while(CheckDied() == false)
             {
                 List<int> randomList = new List<int>();
                 
-                Debug.Log("DIE");
+                //Debug.Log("DIE");
                 // Suffle all blocks if can't move
 
-                for (int t = 0; t < blockSuffle.Length; t++)
+                for (int t = 0; t < blockSuffles.Length; t++)
                 {
-                    var temp = blockSuffle[t].position.value;
+                    var temp = blockSuffles[t].position.value;
                     do
                     {
-                        rnd = Random.Range(0, blockSuffle.Length);
+                        rnd = Random.Range(0, blockSuffles.Length);
 
                     } while (randomList.Contains(rnd));
                     randomList.Add(rnd);
 
-                    blockSuffle[t].ReplacePosition(new Vector2(blockSuffle[rnd].position.value.x,
-                        blockSuffle[rnd].position.value.y));
-                    blockSuffle[rnd].ReplacePosition(new Vector2(temp.x, temp.y));
+                    blockSuffles[t].ReplacePosition(new Vector2(blockSuffles[rnd].position.value.x,
+                        blockSuffles[rnd].position.value.y));
+                    blockSuffles[rnd].ReplacePosition(new Vector2(temp.x, temp.y));
 
 
                 }
 
             }
-//            if (CheckDied(entities))
-//            {
-//                Debug.Log("CHUA DIE");
-//
-//            }
         }
-        if (CheckColorBlock(blockSuffle) || entities[0].moveNum.value == 7)
+        if (CheckColorBlock(blockSuffles) || entities[0].moveNum.value == 0)
         {
             
-            Debug.Log("THUA CUOC");
-            GameController.Instance.StartCoroutine(DelayBeforeSwitchScene(2));
+            //Debug.Log("THUA CUOC");
+            GameController.Instance.StartCoroutine(DelayBeforeSwitchScene(0.8f));
             
         }    
 
@@ -105,22 +101,27 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
     private IEnumerator DelayBeforeSwitchScene(float time)
     {
         yield return  new WaitForSeconds(time);
+        foreach (var viewElement in viewGroup)
+        {
+            if (viewElement.view.gameObject != null)
+            {
+                viewElement.view.gameObject.Unlink();
+            }
+        }
         SceneManager.LoadScene("Lose");
 
     }
 
     // check can't move 
-    bool CheckDied(List<GameEntity> entities)
+    bool CheckDied()
     {
-        var blocksHeart = _heartGroup.GetEntities();
-        var blocks = _blockGroup.GetEntities();
+        var blocksHeart = heartGroup.GetEntities();
+        var blocks = blockGroup.GetEntities();
         foreach (var b in blocks)
         {
 //            Debug.Log("all block : " + b  );
         }
 //        Debug.Log("block 0 : " + blocks[0]);
-        
-
         var name = blocks[0].asset.name;
         var x = blocks[0].position.value.x;
         var y = blocks[0].position.value.y;
@@ -132,9 +133,7 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
         Free[(int) (x / 1.5f), (int) (y / 1.5f)] = 1;
         var flag = 0;
         while(queue.Count != 0)
-        {
-             
-            
+        { 
             //Debug.Log("Queue count :" + queue.Count);
             GameEntity blockPeek = queue.Peek();
             //Debug.Log("GameEntityPeek :" + blockPeek.position.value.x + "  " + blockPeek.position.value.y);
@@ -188,7 +187,7 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
                         // Check trong queue co 2 block cung mau canh nhau hay ko
                         foreach (var i in queue.ToArray())
                         {
-                            if (!b.asset.name.Equals(ASSET_NAME_BRICK) && i.asset.name.Equals(b.asset.name) && ((b.position.value.x == i.position.value.x && b.position.value.y
+                            if (!b.asset.name.Equals(ASSET_NAME_BRICK) && i.asset.name.Equals(b.asset.name) && ((b.position.value.x.Equals(i.position.value.x) && b.position.value.y
                                 == i.position.value.y + 1.5) || (b.position.value.x == i.position.value.x && b.position.value.y
                                 == i.position.value.y - 1.5) || (b.position.value.x == i.position.value.x + 1.5 && b.position.value.y
                                 == i.position.value.y) || (b.position.value.x == i.position.value.x - 1.5 && b.position.value.y
@@ -235,12 +234,12 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
                                 return true;
                             }
                         }
-                        Debug.Log("b3" + b.position.value.x + "  " + b.position.value.y);
+                        //Debug.Log("b3" + b.position.value.x + "  " + b.position.value.y);
                         flag = 0;
                     }
                     else if(b.asset.name == blockPeek.asset.name)
                     {
-                        Debug.Log("ChuaDie3");
+                        //Debug.Log("ChuaDie3");
                         flag = 1;
                         return true;
                     }
@@ -281,18 +280,12 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
                     }
                 }
             }
-            //if(flag == 1) break;
-            //Debug.Log("Chua Die");
         }
-        //Debug.Log("Flag :" + flag);
-        //if(flag == 0)
-        //{
-        //    return false;
-
-        //}
 
         return false;
     }
+    
+    // Check condition can be suffle
     bool CheckColorBlock(GameEntity[] blockSuffle)
     {
         List<GameEntity> s1 = new List<GameEntity>();
@@ -308,9 +301,6 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
             if (block.asset.name.Equals("Prefabs/Piece3")) s4.Add(block);
             if (block.asset.name.Equals("Prefabs/Piece4")) s5.Add(block);
         }
-
-        //Debug.Log("Counttttt :" + s1.Count + " " + s2.Count + " " + s3.Count + " " + s4.Count + " " + s5.Count);
-        //Debug.Log("Lengthhhh :" + blockSuffle.Length);
         if ((s1.Count == 1 || s1.Count == 0) && (s2.Count == 1 || s2.Count == 0) && (s3.Count == 1 || s3.Count == 0) &&
             (s4.Count == 1 || s4.Count == 0) && (s5.Count == 1 || s5.Count == 0))
             return true;
