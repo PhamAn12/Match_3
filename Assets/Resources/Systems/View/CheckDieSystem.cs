@@ -92,7 +92,7 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
         {
             
             //Debug.Log("THUA CUOC");
-            GameController.Instance.StartCoroutine(DelayBeforeSwitchScene(0.8f));
+            GameController.Instance.StartCoroutine(DelayBeforeSwitchScene(0.9f));
             
         }    
 
@@ -187,7 +187,8 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
                         // Check trong queue co 2 block cung mau canh nhau hay ko
                         foreach (var i in queue.ToArray())
                         {
-                            if (!b.asset.name.Equals(ASSET_NAME_BRICK) && i.asset.name.Equals(b.asset.name) && ((b.position.value.x.Equals(i.position.value.x) && b.position.value.y
+
+                            if (!b.asset.name.Equals(ASSET_NAME_BRICK) && i.asset.name.Equals(b.asset.name) && ((b.position.value.x == i.position.value.x && b.position.value.y
                                 == i.position.value.y + 1.5) || (b.position.value.x == i.position.value.x && b.position.value.y
                                 == i.position.value.y - 1.5) || (b.position.value.x == i.position.value.x + 1.5 && b.position.value.y
                                 == i.position.value.y) || (b.position.value.x == i.position.value.x - 1.5 && b.position.value.y
@@ -235,6 +236,7 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
                             }
                         }
                         //Debug.Log("b3" + b.position.value.x + "  " + b.position.value.y);
+
                         flag = 0;
                     }
                     else if(b.asset.name == blockPeek.asset.name)
@@ -280,12 +282,14 @@ public class CheckDieSystem : ReactiveSystem<GameEntity>
                     }
                 }
             }
+
         }
 
         return false;
     }
     
     // Check condition can be suffle
+
     bool CheckColorBlock(GameEntity[] blockSuffle)
     {
         List<GameEntity> s1 = new List<GameEntity>();

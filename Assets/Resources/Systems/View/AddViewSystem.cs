@@ -17,6 +17,7 @@ public class AddViewSystem : ReactiveSystem<GameEntity>, ITearDownSystem
     public AddViewSystem(GameContext Game) : base(Game) {
         context = Game;
         viewGroup = context.GetGroup(GameMatcher.View);
+
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context) {
@@ -64,11 +65,6 @@ public class AddViewSystem : ReactiveSystem<GameEntity>, ITearDownSystem
 
     public void TearDown()
     {
-        Debug.Log("Length of viewGroup arr : " + viewGroup.GetEntities().Length);
-        foreach (var viewElement in viewGroup.GetEntities())
-        {
-            
-        }
         foreach (var viewElement in viewGroup.GetEntities())
         {
             if (viewElement.view.gameObject != null)
@@ -78,6 +74,5 @@ public class AddViewSystem : ReactiveSystem<GameEntity>, ITearDownSystem
             } 
         }
         
-    }
-    
+    }   
 }

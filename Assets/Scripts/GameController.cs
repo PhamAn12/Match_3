@@ -35,22 +35,24 @@ public class GameController : MonoBehaviour
         
         
         
+
     }
 
     private void Update()
     {   
         systems.Execute(); 
-        //_systems.Cleanup();
+        systems.Cleanup();
     }
 
     private void OnDestroy()
     {
         systems.ClearReactiveSystems();
-        //_systems.TearDown();
+        //systems.TearDown();
         systems.DeactivateReactiveSystems();
         contexts.Reset();
 
     }
     
+
 
 }

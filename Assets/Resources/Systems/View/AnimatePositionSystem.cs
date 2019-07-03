@@ -43,7 +43,6 @@ public sealed class AnimatePositionSystem : ReactiveSystem<GameEntity>
             movebleBlockList.Add(m);
             m.isMovable = false;
         }
-
         for (var r = 0 * 1.5f; r < length; r += 1.5f)
         {
             
@@ -204,7 +203,6 @@ public sealed class AnimatePositionSystem : ReactiveSystem<GameEntity>
                 
                 
             }
-
         }
     }
 }

@@ -14,9 +14,8 @@ public class SceneChange : MonoBehaviour
 
     public void SceneBack()
     {
-
         StartCoroutine(DoChangeScene(0f));
-        
+
     }
 
     IEnumerator DoChangeScene( float delay)

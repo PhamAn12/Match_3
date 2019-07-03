@@ -1,6 +1,10 @@
 Android
 PlayerPath?
+<<<<<<< HEAD
 /Users/ma084/Desktop/12.apk
+=======
+/Users/ma084/Unity/2.apk
+>>>>>>> f4a3e24db377ba25abfd72f399fc81cda243fa96
 SceneListBegin?
 Assets/Scenes/Start.unity
 Assets/Scenes/Main.unity
@@ -125,7 +129,10 @@ dd7520b7d4e690e8c593273e7b9fbe80 Assembly-CSharp.dll:TMPro.Examples.TMP_TextEven
 94017dcc9f00fe671ea7dc427b4da011 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
 0769963ca05483a9f7e743b9118b3fba Assembly-CSharp.dll:TMPro.TMP_TextEventHandler
 47930f3b40e24ef5b3b5e3d9ada7097a Assembly-CSharp.dll:TMPro.Examples.Benchmark01
+<<<<<<< HEAD
 a318a82d5abde553e75543c7b3aba918 XiaomiSupport.dll:AppStoresSupport.AppStoreSettings
+=======
+>>>>>>> f4a3e24db377ba25abfd72f399fc81cda243fa96
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.ScoreLabelController
 b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 3375c3d749f8f4cad889721b431bdc27 Assembly-CSharp.dll:TMPro.Examples.CameraController
@@ -171,7 +178,10 @@ fb6a1ea36b4f6ef5948d283d93760765 UnityEngine.GoogleAudioSpatializer.dll:UnityEng
 5b0391b7e3d9ea9db6c0a8fbd0ca23f6 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSoundfieldExtension
 5b0391b7e3d9ea9db6c0a8fbd0ca23f6 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSourceExtension
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:TMPro.Examples.SimpleScript
+<<<<<<< HEAD
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityStore.dll:UnityEngine.Store.MainThreadDispatcher
+=======
+>>>>>>> f4a3e24db377ba25abfd72f399fc81cda243fa96
 931f489e44eadf809e9310429c99dde5 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioListenerExtension
 fb6a1ea36b4f6ef5948d283d93760765 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 5b0391b7e3d9ea9db6c0a8fbd0ca23f6 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSoundfieldExtension

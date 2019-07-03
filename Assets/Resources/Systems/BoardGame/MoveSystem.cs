@@ -54,6 +54,7 @@ public class MoveSystem : ReactiveSystem<GameEntity>,IInitializeSystem,ICleanupS
     public void Cleanup()
     {
         foreach(var e in moveGroup.GetEntities())
+
         {
             e.Destroy();
         }
