@@ -43,6 +43,8 @@ public sealed class AnimatePositionSystem : ReactiveSystem<GameEntity>
             movebleBlockList.Add(m);
             m.isMovable = false;
         }
+
+        Debug.Log("aa" + movebleBlockList.Count);
         for (var r = 0 * 1.5f; r < length; r += 1.5f)
         {
             

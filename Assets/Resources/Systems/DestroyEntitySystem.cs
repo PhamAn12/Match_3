@@ -11,12 +11,12 @@ public class DestroyEntitySystem : ReactiveSystem<GameEntity>
     }
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        return context.CreateCollector(GameMatcher.Destroyed);
+        return context.CreateCollector(GameMatcher.TypeMechanicsDestroy);
     }
 
     protected override bool Filter(GameEntity entity)
     {
-        return entity.isDestroyed;
+        return true;
     }
 
     protected override void Execute(List<GameEntity> entities)

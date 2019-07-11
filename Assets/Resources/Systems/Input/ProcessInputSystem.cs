@@ -32,8 +32,15 @@ public class ProcessInputSystem : ReactiveSystem<InputEntity>
             
 //            Debug.Log("list: " + e.ToString());
 //            Debug.Log("position of game entity :" + e.position.value.x + "  " + e.position.value.y);
-            e.isTabbed = true;
-        //    e.isDestroyed = true;
+            if (e.asset.name.Equals("Prefabs/Rocket"))
+                e.AddTypeTapOn("TapOnRocket");
+            else if (e.asset.name.Equals("Prefabs/Boom"))
+            {
+                e.AddTypeTapOn("TapOnBoom");
+            }
+            else
+                e.isTabbed = true;
+            //    e.isDestroyed = true;
 
         }
     }

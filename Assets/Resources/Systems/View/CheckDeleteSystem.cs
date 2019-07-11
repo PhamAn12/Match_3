@@ -11,10 +11,12 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
     private readonly GameContext context;
     private readonly string ASSET_NAME_BRICK = "Prefabs/GenerateBrick";
     private IGroup<GameEntity> blockGroup;
+    private IGroup<GameEntity> movableBlock;
     public CheckDeleteSystem(GameContext Game) : base(Game)
     {
         context = Game;
         blockGroup = context.GetGroup(GameMatcher.AllOf(GameMatcher.Position,GameMatcher.BoadGameElement).NoneOf(GameMatcher.Tabbed));
+        movableBlock = context.GetGroup(GameMatcher.AllOf(GameMatcher.Movable, GameMatcher.Downable));
 
     }  
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -30,6 +32,8 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
 
     protected override void Execute(List<GameEntity> entities)
     {
+        var movableBlockArr = movableBlock.GetEntities();
+        Debug.Log(movableBlockArr.Length);
         var name = entities[0].asset.name;
         var x = entities[0].position.value.x;
         var y = entities[0].position.value.y;
@@ -42,6 +46,7 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
         q.Enqueue(entities[0]);
         Free[(int) (x/1.5f), (int) (y/1.5f)] = 1;
         var flag = 0;
+        var numOfBlockDeleted = 1;
         if (name != ASSET_NAME_BRICK)
         {
             while (q.Count != 0)
@@ -62,8 +67,9 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
                         Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] = 1;
                         q.Enqueue(b);
                         //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
-                        b.isDestroyed = true;
-                        b.isMovable = true;
+                        b.AddTypeMechanicsDestroy("Normal");
+                        numOfBlockDeleted++;
+                        //b.isMovable = true;
                         flag = 1;
 
                     }
@@ -74,7 +80,9 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
                         Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] = 1;
                         q.Enqueue(b);
                         //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
-                        b.isDestroyed = true;
+                        //b.isDestroyed = true;
+                        b.AddTypeMechanicsDestroy("Normal");
+                        numOfBlockDeleted++;
                         flag = 1;
 
                     }
@@ -85,7 +93,9 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
                         Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] = 1;
                         q.Enqueue(b);
                         //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
-                        b.isDestroyed = true;
+                        //b.isDestroyed = true;
+                        b.AddTypeMechanicsDestroy("Normal");
+                        numOfBlockDeleted++;
                         flag = 1;
 
                     }
@@ -96,7 +106,9 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
                         Free[(int) (b.position.value.x / 1.5f), (int) (b.position.value.y / 1.5f)] = 1;
                         q.Enqueue(b);
                         //Debug.Log("inin element x : " + gameEntity.position.value.x + " y " + gameEntity.position.value.y);
-                        b.isDestroyed = true;
+                        //b.isDestroyed = true;
+                        b.AddTypeMechanicsDestroy("Normal");
+                        numOfBlockDeleted++;
                         flag = 1;
 
                     }
@@ -106,9 +118,26 @@ public class CheckDeleteSystem : ReactiveSystem<GameEntity>
                 
             }
         }    
-
-        if (flag == 1) 
-            entities[0].isDestroyed = true;
+        Debug.Log("so block an" + numOfBlockDeleted);
+        if (flag == 1 && numOfBlockDeleted < 4 && numOfBlockDeleted > 2)
+        {
+            entities[0].ReplaceAsset("Prefabs/Rocket");
+            entities[0].AddTypeMechanic("Rocket");
+            entities[0].isMovable = true;
+            entities[0].isTabbed = false;
+        }
+        else if (flag == 1 && numOfBlockDeleted >= 4 && numOfBlockDeleted < 9)
+        {
+            entities[0].ReplaceAsset("Prefabs/Boom");
+            //entities[0].isBoom = true;
+            entities[0].AddTypeMechanic("Boom");
+            entities[0].isMovable = true;
+            entities[0].isTabbed = false;
+        }
+        else if (flag == 1)
+        {
+            entities[0].AddTypeMechanicsDestroy("Normal");
+        }
         else 
             entities[0].isTabbed = false;
 

@@ -76,6 +76,9 @@
     <Compile Include="Assets\Generated\Game\Components\GamePositionComponent.cs" />
     <Compile Include="Assets\Generated\Game\Components\GameScoreComponent.cs" />
     <Compile Include="Assets\Generated\Game\Components\GameTabbedComponent.cs" />
+    <Compile Include="Assets\Generated\Game\Components\GameTypeMechanicComponent.cs" />
+    <Compile Include="Assets\Generated\Game\Components\GameTypeMechanicsDestroyComponent.cs" />
+    <Compile Include="Assets\Generated\Game\Components\GameTypeTapOnComponent.cs" />
     <Compile Include="Assets\Generated\Game\Components\GameViewComponent.cs" />
     <Compile Include="Assets\Generated\Game\GameAttribute.cs" />
     <Compile Include="Assets\Generated\Game\GameComponentsLookup.cs" />
@@ -110,6 +113,9 @@
     <Compile Include="Assets\Resources\Components\PositionComponent.cs" />
     <Compile Include="Assets\Resources\Components\ScoreComponent.cs" />
     <Compile Include="Assets\Resources\Components\TabbedComponent.cs" />
+    <Compile Include="Assets\Resources\Components\TypeMechanicComponent.cs" />
+    <Compile Include="Assets\Resources\Components\TypeMechanicsDestroyComponent.cs" />
+    <Compile Include="Assets\Resources\Components\TypeTapOnComponent.cs" />
     <Compile Include="Assets\Resources\Components\ViewComponent.cs" />
     <Compile Include="Assets\Resources\Systems\BoardGame\BoardSystems.cs" />
     <Compile Include="Assets\Resources\Systems\BoardGame\CreateBoardSystem.cs" />
@@ -127,6 +133,7 @@
     <Compile Include="Assets\Resources\Systems\View\AnimatePositionSystem.cs" />
     <Compile Include="Assets\Resources\Systems\View\CheckDeleteSystem.cs" />
     <Compile Include="Assets\Resources\Systems\View\CheckDieSystem.cs" />
+    <Compile Include="Assets\Resources\Systems\View\MechanicsSystem.cs" />
     <Compile Include="Assets\Resources\Systems\View\RemoveViewSystem.cs" />
     <Compile Include="Assets\Resources\Systems\View\RenderSpriteSystems.cs" />
     <Compile Include="Assets\Resources\Systems\View\SetViewPositionSystem.cs" />
@@ -203,25 +210,25 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>/Users/ma084/Desktop/Match_3/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>/Users/ma084/Unity/Cuoi/Match_3/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>/Users/ma084/Desktop/Match_3/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>/Users/ma084/Unity/Cuoi/Match_3/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>/Users/ma084/Desktop/Match_3/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>/Users/ma084/Unity/Cuoi/Match_3/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Editor">
-      <HintPath>/Users/ma084/Desktop/Match_3/Library/ScriptAssemblies/Editor.dll</HintPath>
+      <HintPath>/Users/ma084/Unity/Cuoi/Match_3/Library/ScriptAssemblies/Editor.dll</HintPath>
     </Reference>
     <Reference Include="XiaomiSupport">
-      <HintPath>/Users/ma084/Desktop/Match_3/Library/ScriptAssemblies/XiaomiSupport.dll</HintPath>
+      <HintPath>/Users/ma084/Unity/Cuoi/Match_3/Library/ScriptAssemblies/XiaomiSupport.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>/Users/ma084/Desktop/Match_3/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>/Users/ma084/Unity/Cuoi/Match_3/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>/Users/ma084/Desktop/Match_3/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>/Users/ma084/Unity/Cuoi/Match_3/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -422,55 +429,55 @@
       <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Entitas.CodeGeneration.Attributes">
-      <HintPath>/Users/ma084/Desktop/Match_3/Assets/Entitas/Entitas.CodeGeneration.Attributes.dll</HintPath>
+      <HintPath>/Users/ma084/Unity/Cuoi/Match_3/Assets/Entitas/Entitas.CodeGeneration.Attributes.dll</HintPath>
     </Reference>
     <Reference Include="Entitas.Unity">
-      <HintPath>/Users/ma084/Desktop/Match_3/Assets/Entitas/Entitas.Unity.dll</HintPath>
+      <HintPath>/Users/ma084/Unity/Cuoi/Match_3/Assets/Entitas/Entitas.Unity.dll</HintPath>
     </Reference>
     <Reference Include="Entitas.VisualDebugging.Unity">
-      <HintPath>/Users/ma084/Desktop/Match_3/Assets/Entitas/Entitas.VisualDebugging.Unity.dll</HintPath>
+      <HintPath>/Users/ma084/Unity/Cuoi/Match_3/Assets/Entitas/Entitas.VisualDebugging.Unity.dll</HintPath>
     </Reference>
     <Reference Include="Entitas">
-      <HintPath>/Users/ma084/Desktop/Match_3/Assets/Entitas/Entitas.dll</HintPath>
+      <HintPath>/Users/ma084/Unity/Cuoi/Match_3/Assets/Entitas/Entitas.dll</HintPath>
     </Reference>
     <Reference Include="DesperateDevs.Utils">
-      <HintPath>/Users/ma084/Desktop/Match_3/Assets/DesperateDevs/DesperateDevs.Utils.dll</HintPath>
+      <HintPath>/Users/ma084/Unity/Cuoi/Match_3/Assets/DesperateDevs/DesperateDevs.Utils.dll</HintPath>
     </Reference>
     <Reference Include="DesperateDevs.Logging">
-      <HintPath>/Users/ma084/Desktop/Match_3/Assets/DesperateDevs/DesperateDevs.Logging.dll</HintPath>
+      <HintPath>/Users/ma084/Unity/Cuoi/Match_3/Assets/DesperateDevs/DesperateDevs.Logging.dll</HintPath>
     </Reference>
     <Reference Include="DesperateDevs.Serialization">
-      <HintPath>/Users/ma084/Desktop/Match_3/Assets/DesperateDevs/DesperateDevs.Serialization.dll</HintPath>
+      <HintPath>/Users/ma084/Unity/Cuoi/Match_3/Assets/DesperateDevs/DesperateDevs.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="DesperateDevs.Networking">
-      <HintPath>/Users/ma084/Desktop/Match_3/Assets/DesperateDevs/DesperateDevs.Networking.dll</HintPath>
+      <HintPath>/Users/ma084/Unity/Cuoi/Match_3/Assets/DesperateDevs/DesperateDevs.Networking.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
-      <HintPath>/Users/ma084/Desktop/Match_3/Assets/DOTween/DOTween.dll</HintPath>
+      <HintPath>/Users/ma084/Unity/Cuoi/Match_3/Assets/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="DOTween43">
-      <HintPath>/Users/ma084/Desktop/Match_3/Assets/DOTween/DOTween43.dll</HintPath>
+      <HintPath>/Users/ma084/Unity/Cuoi/Match_3/Assets/DOTween/DOTween43.dll</HintPath>
     </Reference>
     <Reference Include="DOTween50">
-      <HintPath>/Users/ma084/Desktop/Match_3/Assets/DOTween/DOTween50.dll</HintPath>
+      <HintPath>/Users/ma084/Unity/Cuoi/Match_3/Assets/DOTween/DOTween50.dll</HintPath>
     </Reference>
     <Reference Include="DOTween46">
-      <HintPath>/Users/ma084/Desktop/Match_3/Assets/DOTween/DOTween46.dll</HintPath>
+      <HintPath>/Users/ma084/Unity/Cuoi/Match_3/Assets/DOTween/DOTween46.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>/Users/ma084/Desktop/Match_3/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>/Users/ma084/Unity/Cuoi/Match_3/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>/Users/ma084/Desktop/Match_3/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>/Users/ma084/Unity/Cuoi/Match_3/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>/Users/ma084/Desktop/Match_3/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>/Users/ma084/Unity/Cuoi/Match_3/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="ChannelPurchase">
-      <HintPath>/Users/ma084/Desktop/Match_3/Library/PackageCache/com.unity.xiaomi@1.0.3/ChannelPurchase.dll</HintPath>
+      <HintPath>/Users/ma084/Unity/Cuoi/Match_3/Library/PackageCache/com.unity.xiaomi@1.0.3/ChannelPurchase.dll</HintPath>
     </Reference>
     <Reference Include="UnityStore">
-      <HintPath>/Users/ma084/Desktop/Match_3/Library/PackageCache/com.unity.xiaomi@1.0.3/UnityStore.dll</HintPath>
+      <HintPath>/Users/ma084/Unity/Cuoi/Match_3/Library/PackageCache/com.unity.xiaomi@1.0.3/UnityStore.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>/Applications/Unity/Unity.app/Contents/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

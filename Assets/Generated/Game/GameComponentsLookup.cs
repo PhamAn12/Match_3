@@ -11,25 +11,33 @@ public static class GameComponentsLookup {
     public const int Asset = 0;
     public const int BoadGame = 1;
     public const int BoadGameElement = 2;
-    public const int BurstMode = 3;
-    public const int Destroyed = 4;
-    public const int Downable = 5;
-    public const int Heart = 6;
-    public const int Input = 7;
-    public const int Interactive = 8;
-    public const int Movable = 9;
-    public const int MoveNum = 10;
-    public const int Position = 11;
-    public const int Score = 12;
-    public const int Tabbed = 13;
-    public const int View = 14;
+    public const int Boom = 3;
+    public const int BurstMode = 4;
+    public const int Destroyed = 5;
+    public const int Downable = 6;
+    public const int Heart = 7;
+    public const int Input = 8;
+    public const int Interactive = 9;
+    public const int Movable = 10;
+    public const int MoveNum = 11;
+    public const int Position = 12;
+    public const int Rocket = 13;
+    public const int Score = 14;
+    public const int Tabbed = 15;
+    public const int TapOnBoom = 16;
+    public const int TapOnRocket = 17;
+    public const int TypeMechanic = 18;
+    public const int TypeMechanicsDestroy = 19;
+    public const int TypeTapOn = 20;
+    public const int View = 21;
 
-    public const int TotalComponents = 15;
+    public const int TotalComponents = 22;
 
     public static readonly string[] componentNames = {
         "Asset",
         "BoadGame",
         "BoadGameElement",
+        "Boom",
         "BurstMode",
         "Destroyed",
         "Downable",
@@ -39,8 +47,14 @@ public static class GameComponentsLookup {
         "Movable",
         "MoveNum",
         "Position",
+        "Rocket",
         "Score",
         "Tabbed",
+        "TapOnBoom",
+        "TapOnRocket",
+        "TypeMechanic",
+        "TypeMechanicsDestroy",
+        "TypeTapOn",
         "View"
     };
 
@@ -48,6 +62,7 @@ public static class GameComponentsLookup {
         typeof(AssetComponent),
         typeof(BoadGameComponent),
         typeof(BoadGameElementComponent),
+        //typeof(BoomComponent),
         typeof(BurstModeComponent),
         typeof(DestroyedComponent),
         typeof(DownableComponent),
@@ -57,8 +72,14 @@ public static class GameComponentsLookup {
         typeof(MovableComponent),
         typeof(MoveNumComponent),
         typeof(PositionComponent),
+        //typeof(RocketComponent),
         typeof(ScoreComponent),
         typeof(TabbedComponent),
+        //typeof(TapOnBoomComponent),
+        //typeof(TapOnRocketComponent),
+        typeof(TypeMechanicComponent),
+        typeof(TypeMechanicsDestroyComponent),
+        typeof(TypeTapOnComponent),
         typeof(ViewComponent)
     };
 }
